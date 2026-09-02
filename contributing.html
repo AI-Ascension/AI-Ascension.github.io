@@ -73,6 +73,7 @@
   <div class="label">Rust<span class="sub">Rust / systems contributor</span></div>
   <div class="body">
     <h2 id="c-rust">Add a fence-case fixture</h2>
+    <p><strong>Starter issue:</strong> <a href="https://github.com/AI-Ascension/AI-Ascension.github.io/issues/1">#1 — add a fence-case fixture to the gateway-lease-fence recipe</a> (label <code>first-task</code>; scoped to the site repository; the product crate is a pinned dependency).</p>
     <p><strong>One repository:</strong> <a href="https://github.com/AI-Ascension/sts2-gateway">sts2-gateway</a> (read only <code>crates/gateway/tests/control_plane.rs</code> and the recipe under <a href="https://github.com/AI-Ascension/AI-Ascension.github.io/tree/main/recipes/gateway-lease-fence">recipes/gateway-lease-fence</a>).</p>
     <p><strong>First safe task:</strong> run the <a href="recipes.html">recipe</a> and confirm the hash. Then pick one fence variant the fixture does not yet show — <code>WrongCaller</code>, <code>WrongSession</code>, <code>WrongLease</code>, <code>Missing</code>, or <code>Expired</code> — and write it as a fixture step: input, expected result, boundary, decision, and the source test it mirrors. Bounded: one variant, one step, no changes to product crates.</p>
     <p><strong>Use:</strong> the <a href="https://github.com/AI-Ascension/.github/issues/new?template=proof-recipe.yml">proof-recipe form</a> for the fixture, or the <a href="https://github.com/AI-Ascension/.github/issues/new?template=contract-observation.yml">contract-observation form</a> if the gateway does something its README does not say.</p>
@@ -83,6 +84,7 @@
   <div class="label">MCP<span class="sub">AI / MCP / automation builder</span></div>
   <div class="body">
     <h2 id="c-mcp">Sketch an adapter example against the tool schema</h2>
+    <p><strong>Starter issue:</strong> <a href="https://github.com/AI-Ascension/AI-Ascension.github.io/issues/2">#2 — second recipe replaying the MCP seam</a> (label <code>first-task</code>; scoped to the site repository).</p>
     <p><strong>One repository:</strong> <a href="https://github.com/AI-Ascension/sts2-mcp-server">sts2-mcp-server</a> (read <code>crates/mcp-server/tests/seam.rs</code>; the single tool is <code>sts2_get_state</code>).</p>
     <p><strong>First safe task:</strong> write a JSON-RPC <code>tools/call</code> example for <code>sts2_get_state</code> that an adapter would send, and the one gateway request it should map to (<code>GET /v1/instances/{id}/state</code> with <code>x-mcp-request-id</code> and <code>x-mcp-session-id</code>). Then write one malformed variant and the error code you expect (-32700, -32602, or -32601). Bounded: no transport, no credentials, no model call.</p>
     <p><strong>Use:</strong> the <a href="https://github.com/AI-Ascension/.github/issues/new?template=proof-recipe.yml">proof-recipe form</a> for an adapter example, or the <a href="https://github.com/AI-Ascension/.github/issues/new?template=contract-observation.yml">contract-observation form</a> for a schema observation. Read <a href="architecture.html">architecture</a> first if you want the surrounding tiers.</p>
