@@ -51,7 +51,7 @@ Generated 2026-09-02T07:21:47.583Z by `scratchpad/identity-tools/manifest.js`. P
 | `identity/favicon.svg` | 64×64 (viewBox 0 0 64 64) | 289 | `20fea5632997ea5640947cf5ab97e741a317ba7f08d7a769357f70d5270be925` | scratchpad/identity-tools/build-art.js: rounded square #0B0A08 + glyph caret #F2B75C |
 | `identity/favicon-32.png` | 32×32 | 616 | `ef1e931627f5997cac31c06257412ef0b11527731e27509ef6ec880b9b0977e6` | scratchpad/identity-tools/build-art.js: sharp(favicon.svg).resize(32,32) |
 | `identity/apple-touch-icon.png` | 180×180 | 3614 | `99b6e29ab9ed121b7870e13fc76b1c82da1dbbb0ad9b1fddab90080deeed4901` | scratchpad/identity-tools/build-art.js: sharp(avatar.png).resize(180,180) |
-| `identity/ART_TRANSFORMS.md` | 134 lines | 14805 | `d5794c448bc7baf4ee68fc7c6d0deda2639c5865b5dcffc651dfd685fc930311` | scratchpad/identity-tools/build-art.js (recomposition log: source hash → operations → output hash) |
+| `identity/ART_TRANSFORMS.md` | 134 lines | 15785 | `23f4c4f03ef2233dc846fea2219addac0e0c0031c01432cbb76a988d5c9b056d` | scratchpad/identity-tools/build-art.js (recomposition log: source hash → operations → output hash) |
 | `fonts/fraunces-latin-wght-normal.woff2` | — | 36620 | `7f9d191d999336d3b9790afa72e1358e50a13b06d4f289341e92a311967a80f9` | copied unmodified from @fontsource-variable/fraunces 5.3.0 files/ |
 | `fonts/fraunces-latin-wght-italic.woff2` | — | 45656 | `bceec2ef4d549efbc8df0194a8d5280b6a64c3e399244dffccd9ea1bd9ad6db7` | copied unmodified from @fontsource-variable/fraunces 5.3.0 files/ |
 | `fonts/bricolage-grotesque-latin-wght-normal.woff2` | — | 41344 | `a97804dc9fbe5fc972a08018c5eda4dab7ef2346f64c57e61419d05e6de4ea1c` | copied unmodified from @fontsource-variable/bricolage-grotesque 5.3.0 files/ |

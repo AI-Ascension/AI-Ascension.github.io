@@ -63,6 +63,7 @@
   <div class="label">Topology<span class="sub">bottom to top</span></div>
   <div class="body">
     <h2 id="topo-title">Runtime topology</h2>
+    <div class="diagram-scroll">
     <svg class="diagram" viewBox="0 0 640 740" role="img" aria-labelledby="topo-svg-title topo-svg-desc">
       <title id="topo-svg-title">Runtime topology, bottom to top</title>
       <desc id="topo-svg-desc">Six nodes stacked vertically: game host at the bottom (authority), then sts2-game-mod, sts2-gateway, sts2-mcp-server, sts2-harness, and model/provider at the top. Arrows between nodes are labelled with what crosses. sts2-game-core and sts2-protocol sit beside the stack, not on the path.</desc>
@@ -86,6 +87,7 @@
       <g transform="translate(20 300)"><rect class="box box--beside" width="140" height="56"/><text x="10" y="24">sts2-protocol</text><text class="dim" x="10" y="42">metadata · beside</text></g>
       <text class="dim" x="20" y="400">read bottom to top ↑</text>
     </svg>
+    </div>
     <p class="small">What crosses each arrow is source-derived from the repositories' README and ARCHITECTURE documents. Today every arrow ends at an injected fake; no two tiers run against each other.</p>
   </div>
 </section>

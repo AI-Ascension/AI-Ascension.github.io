@@ -92,32 +92,32 @@
     <p>The proposed runtime path, top tier first as printed and read from the bottom up. Each repository row carries its approved description and a stamp for what is tested today. The two endpoints are not repositories.</p>
     <ol class="ascent" data-reveal reversed>
       <li class="tier tier--endpoint">
-        <span class="tier__n">tier 6 · endpoint</span>
+        <span class="tier__n">tier 5 · endpoint</span>
         <div><p class="tier__name">model / provider</p><p class="tier__desc">A pluggable model-provider interface exists in the harness; no provider is called anywhere today. Model cost: none.</p>
         <div class="tier__meta"><span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span> <span>no provider execution is claimed</span></div></div>
       </li>
       <li class="tier tier--repo">
-        <span class="tier__n">tier 5 · repository</span>
+        <span class="tier__n">tier 4 · repository</span>
         <div><p class="tier__name"><a href="https://github.com/AI-Ascension/sts2-harness">sts2-harness</a></p><p class="tier__desc">Experiment coordinator for AI runs: episodes, a pluggable model-provider interface, replay of recorded records, and artifact lineage.</p>
         <div class="tier__meta"><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span> <span>pure coordinator ports, retry/idempotency, record/replay, lineage, bounded shutdown (deterministic fakes)</span></div></div>
       </li>
       <li class="tier tier--repo">
-        <span class="tier__n">tier 4 · repository</span>
+        <span class="tier__n">tier 3 · repository</span>
         <div><p class="tier__name"><a href="https://github.com/AI-Ascension/sts2-mcp-server">sts2-mcp-server</a></p><p class="tier__desc">Thin MCP tool adapter that maps approved calls to the authenticated gateway API without bypassing it.</p>
         <div class="tier__meta"><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span> <span>one tool call → exactly one gateway request; malformed frames rejected before the gateway</span></div></div>
       </li>
       <li class="tier tier--repo">
-        <span class="tier__n">tier 3 · repository</span>
+        <span class="tier__n">tier 2 · repository</span>
         <div><p class="tier__name"><a href="https://github.com/AI-Ascension/sts2-gateway">sts2-gateway</a></p><p class="tier__desc">In-memory control plane for game-host instances: lifecycle, one lease per instance with epoch fencing, and fixed routes.</p>
         <div class="tier__meta"><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span> <span>lease + epoch fencing, fixed routes, byte limits, fail-closed on faults · <a href="proof.html">replayed on the proof page</a></span></div></div>
       </li>
       <li class="tier tier--repo">
-        <span class="tier__n">tier 2 · repository</span>
+        <span class="tier__n">tier 1 · repository</span>
         <div><p class="tier__name"><a href="https://github.com/AI-Ascension/sts2-game-mod">sts2-game-mod</a></p><p class="tier__desc">Game-process adapter: a bounded main-thread work queue, versioned ABI check, and HTTP request admission limits.</p>
         <div class="tier__meta"><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span> <span>queue, dispatcher, ABI descriptor validation, transport-free admission guard</span> <span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span> <span>no game launched, no loader, no listener</span></div></div>
       </li>
       <li class="tier tier--endpoint">
-        <span class="tier__n">tier 1 · endpoint</span>
+        <span class="tier__n">tier 0 · authority</span>
         <div><p class="tier__name">game host</p><p class="tier__desc">The game process keeps authority. Nothing here launches, patches, or connects to it today.</p>
         <div class="tier__meta"><span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span> <span>host and game compatibility</span></div></div>
       </li>

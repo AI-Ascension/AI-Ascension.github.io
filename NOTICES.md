@@ -15,3 +15,12 @@ Every identity asset (wordmark, glyph, stamps, banners, avatar, hero art, social
 The site's HTML, CSS, and JavaScript are original and MIT licensed (see `LICENSE`). No other third-party code is included: no framework, no bundler, no CSS library, no analytics.
 
 The recipe under `recipes/gateway-lease-fence/` depends on the `sts2-gateway` crate (MIT, AI-Ascension) at a pinned revision; see its `Cargo.toml`.
+
+## Generated art — usage basis
+
+`assets/identity/art/ledger-spire-source.png` was generated on 2026-09-02 through the organization
+maintainer's own Codex account (`image_gen.imagegen`; the file's embedded C2PA manifest names
+`gpt-image` 2.0) from a text prompt with no reference imagery. OpenAI's terms of use assign the user
+the rights in generated output to the extent they are assignable; the maintainer publishes the source
+and every derivative here as original branding under this repository's MIT license. The art is not
+product evidence, depicts no game content, and the C2PA manifest is retained in the source file.

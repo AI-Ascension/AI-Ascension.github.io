@@ -71,7 +71,7 @@
 </section>
 
 <section class="row row--hover" id="sts2-game-mod" aria-labelledby="h-mod">
-  <div class="label">sts2-game-mod<span class="sub">tier 2 · game-process adapter</span></div>
+  <div class="label">sts2-game-mod<span class="sub">tier 1 · game-process adapter</span></div>
   <div class="body">
     <h2 id="h-mod">sts2-game-mod</h2>
     <p>Game-process adapter: a bounded main-thread work queue, versioned ABI check, and HTTP request admission limits.</p>
@@ -83,7 +83,7 @@
 </section>
 
 <section class="row row--hover" id="sts2-gateway" aria-labelledby="h-gw">
-  <div class="label">sts2-gateway<span class="sub">tier 3 · control plane · proof lives here</span></div>
+  <div class="label">sts2-gateway<span class="sub">tier 2 · control plane · proof lives here</span></div>
   <div class="body">
     <h2 id="h-gw">sts2-gateway</h2>
     <p>In-memory control plane for game-host instances: lifecycle, one lease per instance with epoch fencing, and fixed routes.</p>
@@ -95,7 +95,7 @@
 </section>
 
 <section class="row row--hover" id="sts2-mcp-server" aria-labelledby="h-mcp">
-  <div class="label">sts2-mcp-server<span class="sub">tier 4 · MCP adapter</span></div>
+  <div class="label">sts2-mcp-server<span class="sub">tier 3 · MCP adapter</span></div>
   <div class="body">
     <h2 id="h-mcp">sts2-mcp-server</h2>
     <p>Thin MCP tool adapter that maps approved calls to the authenticated gateway API without bypassing it.</p>
@@ -107,7 +107,7 @@
 </section>
 
 <section class="row row--hover" id="sts2-harness" aria-labelledby="h-harness">
-  <div class="label">sts2-harness<span class="sub">tier 5 · flagship</span></div>
+  <div class="label">sts2-harness<span class="sub">tier 4 · flagship · experiment coordinator</span></div>
   <div class="body">
     <h2 id="h-harness">sts2-harness</h2>
     <p>Experiment coordinator for AI runs: episodes, a pluggable model-provider interface, replay of recorded records, and artifact lineage.</p>
