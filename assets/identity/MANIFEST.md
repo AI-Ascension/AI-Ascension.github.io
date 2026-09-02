@@ -25,7 +25,7 @@ Generated 2026-09-02T07:21:47.583Z by `scratchpad/identity-tools/manifest.js`. P
 | `identity/MANIFEST.md` | — | — | (self) | scratchpad/identity-tools/manifest.js (this file; own hash omitted) |
 | `identity/art/ledger-spire-source.png` | 1536×1024 | 2851213 | `c77235b84035037f30b6a1be8e0791bf7dcd262b415a939ed9f798256abac461` | selected Direction A source (lead, 2026-09-02); generated upstream with Codex image_gen.imagegen, exact model revision unverified; copied by the lead, not modified here |
 | `identity/hero-art.png` | 1600×1000 | 2974494 | `798d4dadfa2b4391635e9a6601095f72fd76367d35f3b9d8ebe1bbb8a55dffb4` | scratchpad/identity-tools/build-art.js: sharp cover-resize of the source (see ART_TRANSFORMS.md) |
-| `identity/hero-art-dark.png` | 1600×1000 | 835916 | `602f8947aa80c03c7b9402862349387d48d35df874178fa62c8a6b4ae165a685` | scratchpad/identity-tools/build-art.js: cover-resize → per-channel linear darken → vector spire overlay (ART_TRANSFORMS.md) |
+| `identity/hero-art-dark.png` | 1600×1000 | 1833665 | `155e74926aee1eecc8684a612ac7a9e4e59cc3e3484795022c37f97f2e5c20b1` | scratchpad/identity-tools/build-art.js: cover-resize → per-channel linear darken → vector spire overlay (ART_TRANSFORMS.md) |
 | `identity/proof-card.png` | 1280×640 | 750278 | `3879141625d13cfecf1e542053a09577ef2e50d673ca7af487d90870d4bd5815` | scratchpad/identity-tools/build-art.js: card background (resize/extract/linear/spire) + overlays/proof-card.svg (outlined text) |
 | `identity/social/org.png` | 1280×640 | 749170 | `466676fa8344b945d26314d0e50a320d2bdfb464aed1b98dc1ba10b269a2e084` | scratchpad/identity-tools/build-art.js: card background + overlays/org.svg (outlined text) |
 | `identity/social/dot-github.png` | 1280×640 | 740031 | `74e97f708f36019462cafc607d29ac898be4999a7ebd777e8e94f4d84205805a` | scratchpad/identity-tools/build-art.js: card background + overlays/dot-github.svg (outlined text) |
@@ -80,6 +80,6 @@ Size-only WebP derivatives of `hero-art.png` / `hero-art-dark.png` produced by t
 | `assets/hero/hero-art-1024.webp` | 37750 | `a19175f471b9d84e807abe81ae00844b532bc86374821f76b9c414c52321e209` |
 | `assets/hero/hero-art-1600.webp` | 99264 | `d049b4d64f282981f0d03391480adb4525dc983c7739f795cc52521374341f52` |
 | `assets/hero/hero-art-640.webp` | 9230 | `e1d833efaad1cb5d7282a2080721b9e3e9bd3bc6b3fe9aa7169503b167a646b4` |
-| `assets/hero/hero-art-dark-1024.webp` | 4062 | `1c5410158b315d32783b21a5b6d4de1e94984b1a2a045c9480bf649f87d6a959` |
-| `assets/hero/hero-art-dark-1600.webp` | 10218 | `50ac5e7bbcb887b583262cc7aa414070ed51ac95d5b75dedcffb84650259be94` |
-| `assets/hero/hero-art-dark-640.webp` | 1856 | `496e219299460b971ff84c85f24d10d8d168408ac4aa3b6f07f17b29fd4ae60f` |
+| `assets/hero/hero-art-dark-1024.webp` | 8604 | `a6ac02bd1f571194eb9361e7f83fd0d67a41439c3e4e5ea337d0b7d4415e169a` |
+| `assets/hero/hero-art-dark-1600.webp` | 26488 | `7403b0bb785d00013e76585d14269af5db9fb69a023d384f5ab3036cf5a7c6a6` |
+| `assets/hero/hero-art-dark-640.webp` | 2880 | `e6553f4b6ec6913e7c225f681df6c27f5f6b1ab2ab9abf7503175ee1779b2b31` |

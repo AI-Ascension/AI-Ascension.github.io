@@ -131,3 +131,14 @@ Card background luminance under the text column (x 380–1230, y 60–580): mean
 ## Source provenance metadata (found, not asserted)
 
 `strings` over `art/ledger-spire-source.png` shows an embedded C2PA manifest (OpenAI-issued, SSL.com C2PA certificate chain): `c2pa.created` 2026-09-02T00:00:00Z, `softwareAgent` name `gpt-image` version `2.0`, `digitalSourceType` `trainedAlgorithmicMedia`. This is source-derived from the file itself; it names a model family and major version, not an exact revision, so the revision stays `unverified`. The `http://` strings the grep finds inside the PNG are certificate/OCSP URLs in that manifest, not resources the site requests. Derived PNGs written by sharp do not carry the manifest (0 `c2pa` strings in `hero-art.png`, `proof-card.png`).
+
+## Re-transformation by the lead (2026-09-02T07:44:06Z): hero-art-dark
+
+Reason: the first dark hero (linear a≈0.10) read as a near-black box in two cold-reader screenshots.
+Operation: `sharp('hero-art.png').linear([0.40,0.375,0.335],[0,0,0])` → composite
+`overlays/hero-art-dark.spire.svg` (over) → `hero-art-dark.png` 1600×1000, sha256 `155e74926aee1eecc8684a612ac7a9e4e59cc3e3484795022c37f97f2e5c20b1`
+(mean RGB ≈ 80/68/53). WebP derivatives regenerated with `resize({width})` + `webp({quality:82})`:
+- `assets/hero/hero-art-dark-640.webp` 2880 bytes, sha256 `e6553f4b6ec6913e7c225f681df6c27f5f6b1ab2ab9abf7503175ee1779b2b31`
+- `assets/hero/hero-art-dark-1024.webp` 8604 bytes, sha256 `a6ac02bd1f571194eb9361e7f83fd0d67a41439c3e4e5ea337d0b7d4415e169a`
+- `assets/hero/hero-art-dark-1600.webp` 26488 bytes, sha256 `7403b0bb785d00013e76585d14269af5db9fb69a023d384f5ab3036cf5a7c6a6`
+Previous dark hero hash `602f8947…65a685` is superseded; no image-model call was made.
