@@ -1,0 +1,156 @@
+{
+  "recipe": "gateway-lease-fence",
+  "crate": "sts2-gateway",
+  "rev": "e7bce21d0cbd48a02c25d6463a3376ea1c94e253",
+  "mode": "deterministic-replay",
+  "live_game_compatibility": "unverified",
+  "config": {
+    "capacity": 4,
+    "lease_duration_millis": 10,
+    "max_body_bytes": 8,
+    "max_response_bytes": 8
+  },
+  "steps": [
+    {
+      "n": 1,
+      "action": "allocate_reconcile",
+      "input": {
+        "caller_id": 7,
+        "session_id": 11
+      },
+      "result": "allocate=Ok(Allocation { instance_id: InstanceId(1), lease: Lease { instance_id: InstanceId(1), caller_id: CallerId(7), session_id: SessionId(11), lease_id: LeaseId(1), epoch: LeaseEpoch(1), expires_at: Tick(10) } }); reconcile=Ok(Ready)",
+      "transport_calls": 0,
+      "boundary": "gateway.allocate → ProcessPort; gateway.reconcile → ProcessPort, ReadinessPort",
+      "decision": "allowed",
+      "source_test": "allocation_reconciles_through_readiness"
+    },
+    {
+      "n": 2,
+      "action": "allocate_reconcile",
+      "input": {
+        "caller_id": 7,
+        "session_id": 11
+      },
+      "result": "allocate=Ok(Allocation { instance_id: InstanceId(2), lease: Lease { instance_id: InstanceId(2), caller_id: CallerId(7), session_id: SessionId(11), lease_id: LeaseId(2), epoch: LeaseEpoch(1), expires_at: Tick(10) } }); reconcile=Ok(Ready)",
+      "transport_calls": 0,
+      "boundary": "gateway.allocate → ProcessPort; gateway.reconcile → ProcessPort, ReadinessPort",
+      "decision": "allowed",
+      "source_test": "allocation_reconciles_through_readiness"
+    },
+    {
+      "n": 3,
+      "action": "forward_stale_epoch",
+      "input": {
+        "target_instance_id": 1,
+        "proof": {
+          "instance_id": 1,
+          "caller_id": 7,
+          "session_id": 11,
+          "lease_id": 1,
+          "epoch": 0
+        },
+        "operation_id": 1,
+        "route": "Command",
+        "body_len": 1
+      },
+      "result": "Err(Fence(StaleEpoch))",
+      "transport_calls": 0,
+      "boundary": "gateway.forward → lease fence (before TransportPort)",
+      "decision": "denied-before-transport",
+      "source_test": "stale_epoch_and_wrong_instance_are_denied_before_transport"
+    },
+    {
+      "n": 4,
+      "action": "forward_wrong_instance",
+      "input": {
+        "target_instance_id": 2,
+        "proof": {
+          "instance_id": 1,
+          "caller_id": 7,
+          "session_id": 11,
+          "lease_id": 1,
+          "epoch": 1
+        },
+        "operation_id": 2,
+        "route": "ReadOnly",
+        "body_len": 1
+      },
+      "result": "Err(Fence(WrongInstance))",
+      "transport_calls": 0,
+      "boundary": "gateway.forward → lease fence (before TransportPort)",
+      "decision": "denied-before-transport",
+      "source_test": "stale_epoch_and_wrong_instance_are_denied_before_transport"
+    },
+    {
+      "n": 5,
+      "action": "forward_valid",
+      "input": {
+        "target_instance_id": 1,
+        "proof": {
+          "instance_id": 1,
+          "caller_id": 7,
+          "session_id": 11,
+          "lease_id": 1,
+          "epoch": 1
+        },
+        "operation_id": 3,
+        "route": "Receipt",
+        "body_len": 2
+      },
+      "result": "Ok(TransportResponse { status: 200, body: [1] })",
+      "transport_calls": 1,
+      "boundary": "gateway.forward → TransportPort",
+      "decision": "allowed",
+      "source_test": "fixed_transport_is_bounded_and_fail_closed"
+    },
+    {
+      "n": 6,
+      "action": "forward_body_too_large",
+      "input": {
+        "target_instance_id": 1,
+        "proof": {
+          "instance_id": 1,
+          "caller_id": 7,
+          "session_id": 11,
+          "lease_id": 1,
+          "epoch": 1
+        },
+        "operation_id": 4,
+        "route": "Command",
+        "body_len": 9
+      },
+      "result": "Err(BodyTooLarge { limit: 8, actual: 9 })",
+      "transport_calls": 1,
+      "boundary": "gateway.forward → body limit (before lease fence and TransportPort)",
+      "decision": "denied-by-limit",
+      "source_test": "fixed_transport_is_bounded_and_fail_closed"
+    },
+    {
+      "n": 7,
+      "action": "release_status",
+      "input": {
+        "proof": {
+          "instance_id": 1,
+          "caller_id": 7,
+          "session_id": 11,
+          "lease_id": 1,
+          "epoch": 1
+        }
+      },
+      "result": "release=Ok(()); state=Stopped; process_attached=false; stop_modes=[Graceful]",
+      "transport_calls": 1,
+      "boundary": "gateway.release → ProcessPort (graceful stop); gateway.status → in-memory record",
+      "decision": "released",
+      "source_test": "release_then_cleanup_removes_instance"
+    }
+  ],
+  "summary": {
+    "steps": 7,
+    "allowed": 3,
+    "denied_before_transport": 2,
+    "denied_by_limit": 1,
+    "released": 1,
+    "transport_calls_total": 1,
+    "all_expectations_met": true
+  }
+}

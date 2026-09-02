@@ -1,0 +1,22 @@
+[package]
+name = "gateway-lease-fence-recipe"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97.1"
+license = "MIT"
+publish = false
+description = "Deterministic replay of the sts2-gateway lease fence at a pinned revision"
+
+[dependencies]
+sts2-gateway = { git = "https://github.com/AI-Ascension/sts2-gateway", rev = "e7bce21d0cbd48a02c25d6463a3376ea1c94e253" }
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+todo = "deny"
+unimplemented = "deny"
