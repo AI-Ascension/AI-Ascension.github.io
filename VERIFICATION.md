@@ -1,4 +1,9 @@
-# Verification record — 2026-09-02
+# Historical verification record — 2026-09-02
+
+This is the original site builder's dated record, not a fresh review of current default branches.
+Its runtime exclusions describe the pinned foundation proof only. Later bounded host reports and
+their limits are reconciled in `evidence.html#current`; the checks below were not all independently
+rerun by the organization review.
 
 Independent checks run against the published site and the public recipe. Each line names the tool,
 the target commit, and the result. Nothing here is a claim about live game compatibility.

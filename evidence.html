@@ -58,6 +58,21 @@
   </div>
 </section>
 
+<section class="row" id="current" aria-labelledby="current-title">
+  <div class="label">Dated update<span class="sub">reviewed 2026-09-04</span></div>
+  <div class="body">
+    <h2 id="current-title">Beyond the foundation snapshot, not yet autonomous gameplay</h2>
+    <p>The seven-step browser proof remains a deterministic replay at <code>sts2-gateway@e7bce21</code>. It launches no process and calls no provider. The older tables below must not be read as a claim that the organization still has no loader, listener, or runtime.</p>
+    <ul>
+      <li><strong>Source-derived:</strong> default-branch documents record a bounded <code>runtime-v1</code> host probe on 2026-09-02 through harness → MCP → gateway → managed/native mod → Godot. The reported action was <code>show_runtime_probe</code>, with an overlay witness, generation advance, stale-generation rejection, and lease release. Read the <a href="https://github.com/AI-Ascension/sts2-game-mod/blob/f5cc07b6d0f0ef89bd06ea9378e39aa93e82a405/docs/evidence/runtime-v1-host-live-20260902.md">mod report</a> and <a href="https://github.com/AI-Ascension/sts2-harness/blob/7452f6bc8f48073acd2f2903c6327b25dd2f7314/docs/evidence/runtime-v1-host-integration-20260902.md">cross-repository report</a>.</li>
+      <li><strong>Evidence limit:</strong> these are author-reported host observations, not independently repeated by this site review. They name STS2 <code>v0.107.1</code>, Windows x86-64, an exact host-assembly digest, and pre-rename package hashes. Their source states include uncommitted changes; the reports are not a reproducible all-committed release matrix. The cited operator capture is not retained in the repository.</li>
+      <li><strong>Unverified:</strong> reliable autonomous gameplay, gameplay-rule mutation from that probe, provider-backed full runs, restart recovery, multi-instance concurrency, current-package host parity, other platforms, and release support. Runtime-v3 proposals are not credited to default branches.</li>
+      <li><strong>Source-derived:</strong> the organization now includes <a href="repositories.html#observability">ai-agent-observability</a>. Its self-hosted configuration and checks are separate from the gameplay path; source and CI are not proof of an operated deployment.</li>
+    </ul>
+    <p>Rust remains central to the product crates, but the organization also contains managed C#, shell launchers, this static HTML/CSS/JavaScript site, and observability configuration/Python tooling. Follow each repository’s scoped policy exceptions.</p>
+  </div>
+</section>
+
 <section class="row" id="labels" aria-labelledby="labels-title">
   <div class="label">Labels</div>
   <div class="body">
@@ -67,7 +82,7 @@
       <dt><span class="stamp stamp--source-derived"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-source-derived"/></svg>source-derived</span></dt><dd>Read directly from repository source or documentation at a pinned commit, but not executed.</dd>
       <dt><span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span></dt><dd>A design direction or planned path. Nothing about it is claimed to work.</dd>
       <dt><span class="stamp stamp--inferred"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-inferred"/></svg>inferred</span></dt><dd>A reasonable conclusion from confirmed or source-derived facts that has not itself been tested.</dd>
-      <dt><span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span></dt><dd>Not established. Applies to every runtime, host, game, and compatibility claim today.</dd>
+      <dt><span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span></dt><dd>Not established for the specified component, version, environment, or behavior. A bounded host observation must not be generalized to autonomous gameplay or another package.</dd>
     </dl>
     <p class="small">Stamps are always paired with the word; the colour alone never carries meaning.</p>
   </div>
@@ -76,7 +91,8 @@
 <section class="row" id="claims" aria-labelledby="claims-title">
   <div class="label">Claim ledger</div>
   <div class="body">
-    <h2 id="claims-title">Claim ledger</h2>
+    <h2 id="claims-title">Historical foundation claim ledger — 2026-09-02</h2>
+    <p>Rows below preserve the early pinned-source scope, not current capability ceilings. Read the <a href="#current">later evidence update</a> first. Historical claims of local or browser verification are author-reported unless separately reproduced.</p>
     <div class="tbl tbl--wide">
     <table>
       <thead><tr><th>#</th><th>Claim</th><th>Label</th><th>Evidence (file@commit · test · command)</th></tr></thead>
@@ -94,12 +110,12 @@
         <tr><td>11</td><td>Protocol metadata round-trips to the exact golden bytes; malformed digests fail closed; schemas are implementation-neutral.</td><td><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span></td><td><a href="https://github.com/AI-Ascension/sts2-protocol/blob/f3ef7ca3037133cfc0cc571a12af2be1cba3df8f/crates/protocol/tests/protocol_conformance.rs">protocol_conformance.rs@f3ef7ca</a> · <code>neutral_metadata_round_trips_to_the_exact_golden_bytes</code>, <code>malformed_digest_and_safe_message_fail_closed</code>, <code>schema_and_case_are_implementation_neutral</code></td></tr>
         <tr><td>12</td><td>Harness model retry reuses correlation and idempotency keys; records are idempotent and replayable; artifacts are lineage-bound; close unbinds every port once.</td><td><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span></td><td><a href="https://github.com/AI-Ascension/sts2-harness/blob/b485150f4728b7fa1c2b10a9d14e7b6ea2124d0e/crates/harness/tests/foundation.rs">foundation.rs@b485150</a> · <code>model_retry_reuses_correlation_and_idempotency</code>, <code>records_are_idempotent_and_replayable</code>, <code>artifact_metadata_is_lineage_bound</code>, <code>close_unbinds_and_closes_every_port_once</code></td></tr>
         <tr><td>13</td><td>Game-mod HTTP admission reaches the (fake) host only after the bounded main-thread queue is pumped; body limit and ABI gate fail closed; close rejects new admission without dropping existing work.</td><td><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span></td><td><a href="https://github.com/AI-Ascension/sts2-game-mod/blob/aa465f38cda19e246b022374be05acadb4c66d21/crates/game-mod/tests/composition.rs">composition.rs@aa465f3</a> · <code>http_admission_reaches_fake_host_only_after_main_thread_pump</code>, <code>body_limit_and_abi_gate_fail_closed</code>, <code>close_rejects_http_admission_without_dropping_existing_work</code>; queue capacity in <code>crates/host/src/queue.rs</code> (<code>Full { capacity }</code>)</td></tr>
-        <tr><td>14</td><td>All six product trees are Rust-only; non-Rust source is prohibited by the policy tool, which reports zero errors locally.</td><td><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span></td><td>each repository's <code>tools/repo-policy</code> · <code>cargo run -p repo-policy -- --strict</code> (0 warnings, 0 errors, 2026-09-02)</td></tr>
+        <tr><td>14</td><td>The six historical foundation Rust workspaces reported passing policy checks. Current policy has documented integration/tooling exceptions; the organization is not Rust-only.</td><td><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span></td><td>each repository's <code>tools/repo-policy</code> · <code>cargo run -p repo-policy -- --strict</code> (0 warnings, 0 errors, 2026-09-02)</td></tr>
         <tr><td>15</td><td>The browser replay and the cargo recipe print the same trace.</td><td><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span></td><td><a href="recipes/gateway-lease-fence/fixture.json">fixture.json</a> sha256 <code>1115b6f6…695d</code>; the proof page embeds the file byte for byte; three headless runs by the site builder and three by an independent verifier produced trace hash <code>80095d8c</code>; six recipe runs (three warm, three from a fresh cargo home) hashed <code>1115b6f6…695d</code>; recorded in <a href="VERIFICATION.md">VERIFICATION.md</a></td></tr>
-        <tr><td>19</td><td>A four-model live race on separate streams, described at <a href="https://aiascension.tech/" rel="external">aiascension.tech</a>, is the intended use of this path.</td><td><span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span></td><td>event-site copy fetched 2026-09-02 (no stream links present); nothing in any repository runs a game or a model</td></tr>
-        <tr><td>16</td><td>A live Slay the Spire 2 path through mod, gateway, MCP adapter, and harness.</td><td><span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span></td><td>each repository's <code>docs/ARCHITECTURE.md</code>; no runtime exists</td></tr>
-        <tr><td>17</td><td>Runtime, host, and game compatibility. Planning host target STS2 v0.107.1 (Windows x86-64).</td><td><span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span></td><td>each repository's <code>docs/COMPATIBILITY.md</code>; planning target only</td></tr>
-        <tr><td>18</td><td>Isolation under real concurrency; authentication at an external boundary.</td><td><span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span></td><td>not claimed; only record-level isolation exists (<code>sts2-gateway</code> README)</td></tr>
+        <tr><td>19</td><td>A four-model live race on separate streams, described at <a href="https://aiascension.tech/" rel="external">aiascension.tech</a>, is the intended use of this path.</td><td><span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span></td><td>event-site copy fetched 2026-09-02 (no stream links present); this event description is not evidence that the proposed race occurred</td></tr>
+        <tr><td>16</td><td>A live Slay the Spire 2 path through mod, gateway, MCP adapter, and harness.</td><td><span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span></td><td>historical architecture proposal; later bounded runtime evidence is recorded above, not proof of autonomous gameplay</td></tr>
+        <tr><td>17</td><td>General runtime, host, and gameplay compatibility beyond the exact reported STS2 v0.107.1 Windows x86-64 probe.</td><td><span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span></td><td>each repository's <code>docs/COMPATIBILITY.md</code>; no extrapolation from one host probe</td></tr>
+        <tr><td>18</td><td>Isolation under real concurrency; authentication at an external boundary.</td><td><span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span></td><td>not established by the pinned foundation tests; later source includes authenticated runtime listeners, whose broader operational assurance requires separate evidence</td></tr>
       </tbody>
     </table>
     </div>
@@ -110,14 +126,14 @@
   <div class="label">Descriptions</div>
   <div class="body">
     <h2 id="desc-title">Description synchronization</h2>
-    <p>One approved description map drives every public surface: the organization profile, the descriptions and homepages of all eight repositories, the public-entry block at the top of each README, the metadata and Open Graph tags of this site, the social and proof cards, and the launch drafts. Each sentence was reviewed by cold readers who had not seen the repositories, revised twice, and approved on 2026-09-02. If a description on any surface differs from the one shown on the <a href="repositories.html">repositories page</a>, that is drift, and it is a defect.</p>
+    <p>A historical description map was used on 2026-09-02 for: the organization profile, the descriptions and homepages of all eight repositories, the public-entry block at the top of each README, the metadata and Open Graph tags of this site, the social and proof cards, and the launch drafts. Each sentence was reviewed by cold readers who had not seen the repositories, revised twice, and approved on 2026-09-02. Later implementations can legitimately change those descriptions. Reconcile differences against dated source evidence rather than treating this historical map or its image cards as current capability ceilings.</p>
   </div>
 </section>
 
 <section class="row" id="ci" aria-labelledby="ci-title">
   <div class="label">CI results<span class="sub">observed 2026-09-02</span></div>
   <div class="body">
-    <h2 id="ci-title">Workflow results on main</h2>
+    <h2 id="ci-title">Historical workflow observations — not current CI</h2>
     <div class="tbl">
     <table>
       <thead><tr><th>Repository</th><th>Continuous integration</th><th>Repository policy</th><th>Cause</th></tr></thead>
@@ -159,7 +175,7 @@
 </section>
 </main>
 <footer class="site-foot">
-  <p class="status-line">Status: runtime unverified · deterministic tests confirmed</p>
+  <p class="status-line">Status: pinned deterministic proof · <a href="evidence.html#current">bounded host evidence and current limits</a></p>
   <p>AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.</p>
   <ul class="foot-links">
     <li><a href="https://github.com/AI-Ascension">GitHub organization</a></li>

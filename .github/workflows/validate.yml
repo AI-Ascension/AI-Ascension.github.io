@@ -1,0 +1,24 @@
+name: Validate site source
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  static-and-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Validate fixture, local links, and replay controls
+        run: node --test tests/*.test.cjs
+      - name: Select documented Rust toolchain
+        run: rustup toolchain install 1.97.1 --profile minimal
+      - name: Reproduce pinned safe recipe
+        working-directory: recipes/gateway-lease-fence
+        run: |
+          cargo +1.97.1 run --locked --release > "$RUNNER_TEMP/gateway-proof.json"
+          cmp "$RUNNER_TEMP/gateway-proof.json" fixture.json

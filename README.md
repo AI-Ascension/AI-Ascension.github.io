@@ -22,12 +22,17 @@ Every page is hand-authored HTML, CSS, and vanilla JavaScript. Fonts are self-ho
 | `proof.html` | deterministic replay of the `sts2-gateway` lease fence (seven steps from `recipes/gateway-lease-fence/fixture.json`) |
 | `recipes.html` | the starter cargo recipe, an honest empty gallery, how to submit |
 | `architecture.html` | runtime topology, boundary table, definitions |
-| `repositories.html` | eight repositories with approved descriptions, pinned commits, CI results |
+| `repositories.html` | nine-repository inventory, historical pinned commits and CI results |
 | `evidence.html` | claim ledger, labels, description synchronization, unknowns, dispute path |
 | `contributing.html` | one bounded first task per audience |
 | `404.html` | not found |
 
 ## Deploy
+
+`node --test tests/*.test.cjs` checks the embedded fixture, entry-page local links,
+and replay controls with a synthetic DOM. The read-only validation workflow also
+runs the pinned Rust recipe and compares its output. These checks do not render
+the site or establish screen-reader, browser-layout, or game-host behavior.
 
 `.github/workflows/pages.yml` deploys the repository root to GitHub Pages on every push to `main` (and on manual dispatch) using pinned action commits. `.nojekyll` disables Jekyll processing. Pages must be enabled for the repository with "GitHub Actions" as the source.
 
@@ -41,6 +46,6 @@ Design tokens, marks, stamps, and banners live in `assets/identity/`; their prov
 
 ## Status
 
-Runtime unverified; deterministic tests confirmed at the pinned commits.
+The deterministic recipe remains pinned to its historical gateway revision. Current repositories also contain a bounded, dated host-probe report; that is not autonomous gameplay evidence. See `evidence.html#current`.
 
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.

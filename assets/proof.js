@@ -38,6 +38,8 @@
   var idx = 0;          /* number of revealed steps, 0..total */
   var timer = null;
   var running = false;
+  var started = false;
+  var completed = false;
 
   function el(tag, cls, text) {
     var node = document.createElement(tag);
@@ -161,15 +163,20 @@
     if (btnReset) { btnReset.disabled = idx === 0 && !running; }
   }
   function stopTimer() { if (timer) { window.clearInterval(timer); timer = null; } running = false; }
+  function startReplay() {
+    if (!started) { started = true; counters('start'); }
+  }
   function finish() {
-    stopTimer(); render(); counters('complete');
+    stopTimer(); render();
+    if (!completed) { completed = true; counters('complete'); }
     var s = fixture.summary || {};
     announce('Replay complete: ' + total + ' of ' + total + ' steps; allowed ' + s.allowed + ', denied before transport ' + s.denied_before_transport +
       ', denied by limit ' + s.denied_by_limit + ', released ' + s.released + '; transport calls total ' + s.transport_calls_total +
       '. Trace hash ' + trace.getAttribute('data-final-hash') + '.');
   }
   function next(fromTimer) {
-    if (idx >= total) { finish(); return; }
+    if (idx >= total) { return; }
+    startReplay();
     idx += 1;
     render(idx);
     if (idx === total) { finish(); return; }
@@ -181,8 +188,8 @@
   }
   function run() {
     if (running) { return; }
-    if (idx >= total) { idx = 0; }
-    counters('start');
+    if (idx >= total) { idx = 0; started = false; completed = false; }
+    startReplay();
     if (reduced) { idx = total; finish(); return; }
     running = true;
     next(true);
@@ -199,6 +206,7 @@
   function reset() {
     stopTimer();
     idx = 0;
+    started = false; completed = false;
     render();
     announce('Reset. No steps shown.');
   }
@@ -208,6 +216,7 @@
   for (var b = 0; b < pbuttons.length; b++) {
     (function (n) {
       pbuttons[n].addEventListener('click', function () {
+        startReplay();
         stopTimer(); idx = n + 1; render(idx);
         if (idx === total) { finish(); } else { announce(describe(steps[idx - 1])); }
       });
