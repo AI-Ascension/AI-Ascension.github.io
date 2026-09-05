@@ -1,0 +1,22 @@
+[package]
+name = "mcp-seam-recipe"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97.1"
+license = "MIT"
+publish = false
+description = "Deterministic replay of the sts2-mcp-server gateway seam at a pinned revision"
+
+[dependencies]
+sts2-mcp-server = { git = "https://github.com/AI-Ascension/sts2-mcp-server", rev = "5faed9761866f89b922f01d3d389f3db55b9cf5e" }
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+todo = "deny"
+unimplemented = "deny"

@@ -1,0 +1,102 @@
+{
+  "recipe": "mcp-seam",
+  "crate": "sts2-mcp-server",
+  "rev": "5faed9761866f89b922f01d3d389f3db55b9cf5e",
+  "mode": "deterministic-replay",
+  "live_game_compatibility": "unverified",
+  "correlation_source_test": "correlation_preserves_mcp_request_and_session_namespaces",
+  "steps": [
+    {
+      "step": 1,
+      "action": "valid_get_state",
+      "frame": "{\"jsonrpc\":\"2.0\",\"id\":\"mcp-request-42\",\"method\":\"tools/call\",\"params\":{\"name\":\"sts2_get_state\",\"arguments\":{\"instance_id\":\"instance-1\",\"mcp_session_id\":\"mcp-session-9\"}}}",
+      "rpc_error_code": "none",
+      "result": "isError=false; one GET forwarded with both correlation headers",
+      "gateway_calls": 1,
+      "gateway_request": {
+        "method": "GET",
+        "path": "/v1/instances/instance-1/state",
+        "headers": [
+          {
+            "name": "x-mcp-request-id",
+            "value": "mcp-request-42"
+          },
+          {
+            "name": "x-mcp-session-id",
+            "value": "mcp-session-9"
+          }
+        ],
+        "body_present": false,
+        "correlation": {
+          "mcp_session_id": "mcp-session-9",
+          "mcp_request_id": "mcp-request-42"
+        }
+      },
+      "boundary": "McpServer.handle_frame → GatewayAdapter",
+      "decision": "allowed",
+      "source_test": "valid_call_maps_to_one_owned_gateway_request"
+    },
+    {
+      "step": 2,
+      "action": "malformed_json",
+      "frame": "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":",
+      "rpc_error_code": "-32700",
+      "result": "parse error with a null id; nothing forwarded",
+      "gateway_calls": 0,
+      "gateway_request": "none",
+      "boundary": "McpServer.handle_frame → FrameCodec (before GatewayAdapter)",
+      "decision": "denied-before-gateway",
+      "source_test": "malformed_json_is_rejected_before_gateway_access"
+    },
+    {
+      "step": 3,
+      "action": "unsupported_capability",
+      "frame": "{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"resources/list\",\"params\":{}}",
+      "rpc_error_code": "-32601",
+      "result": "method not found; nothing forwarded",
+      "gateway_calls": 0,
+      "gateway_request": "none",
+      "boundary": "McpServer.handle_frame → capability dispatch (before GatewayAdapter)",
+      "decision": "denied-before-gateway",
+      "source_test": "unsupported_capability_is_rejected_without_forwarding"
+    },
+    {
+      "step": 4,
+      "action": "gateway_unauthorized",
+      "frame": "{\"jsonrpc\":\"2.0\",\"id\":\"request-8\",\"method\":\"tools/call\",\"params\":{\"name\":\"sts2_get_state\",\"arguments\":{\"instance_id\":\"instance-3\",\"mcp_session_id\":\"session-2\"}}}",
+      "rpc_error_code": "-32001",
+      "result": "gateway authorization failed mapped to -32001 after one forward",
+      "gateway_calls": 1,
+      "gateway_request": {
+        "method": "GET",
+        "path": "/v1/instances/instance-3/state",
+        "headers": [
+          {
+            "name": "x-mcp-request-id",
+            "value": "request-8"
+          },
+          {
+            "name": "x-mcp-session-id",
+            "value": "session-2"
+          }
+        ],
+        "body_present": false,
+        "correlation": {
+          "mcp_session_id": "session-2",
+          "mcp_request_id": "request-8"
+        }
+      },
+      "boundary": "McpServer.handle_frame → GatewayAdapter",
+      "decision": "denied-by-gateway",
+      "source_test": "gateway_authorization_error_maps_to_stable_rpc_error"
+    }
+  ],
+  "summary": {
+    "steps": 4,
+    "allowed": 1,
+    "denied_before_gateway": 2,
+    "denied_by_gateway": 1,
+    "gateway_calls_total": 2,
+    "all_expectations_met": true
+  }
+}

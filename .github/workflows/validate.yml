@@ -25,3 +25,8 @@ jobs:
         run: |
           cargo +1.97.1 run --locked --release > "$RUNNER_TEMP/gateway-proof.json"
           cmp "$RUNNER_TEMP/gateway-proof.json" fixture.json
+      - name: Reproduce pinned MCP seam recipe
+        working-directory: recipes/mcp-seam
+        run: |
+          cargo +1.97.1 run --locked --release > "$RUNNER_TEMP/mcp-seam.json"
+          cmp "$RUNNER_TEMP/mcp-seam.json" fixture.json
