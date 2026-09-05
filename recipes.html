@@ -54,7 +54,7 @@
   <div class="label">Recipes</div>
   <div class="body">
     <h1 id="recipes-title">Reproduce the proof on your machine.</h1>
-    <p>A recipe is a small cargo program that replays one product contract against the crate's public API with injected fakes, and prints a trace you can compare byte for byte. One starter recipe exists today.</p>
+    <p>A recipe is a small cargo program that replays one product contract against the crate's public API with injected fakes, and prints a trace you can compare byte for byte. Two starter recipes exist today.</p>
   </div>
 </section>
 
@@ -82,6 +82,35 @@ Get-FileHash out.json, fixture.json -Algorithm SHA256 # PowerShell 7</pre>
       <li>Live Slay the Spire 2 compatibility, or behavior against any real game process, host, or transport (<span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span>).</li>
       <li>Anything about game files: none are read, needed, or included.</li>
       <li>Anything about a model or provider: none is used.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="row" id="mcp-seam" aria-labelledby="mcp-seam-title">
+  <div class="label">Starter<span class="sub"><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span></span></div>
+  <div class="body">
+    <h2 id="mcp-seam-title">mcp-seam</h2>
+    <p>A self-contained, deterministic replay of the <code>sts2-mcp-server</code> gateway seam, built only against that crate's public API at rev <code>5faed9761866f89b922f01d3d389f3db55b9cf5e</code>. Source: <a href="https://github.com/AI-Ascension/AI-Ascension.github.io/tree/main/recipes/mcp-seam">recipes/mcp-seam</a>.</p>
+    <dl class="kv">
+      <dt>Prerequisites</dt><dd>Rust 1.97.1 via <code>rustup</code> (<code>rust-toolchain.toml</code> selects it automatically); <code>git</code>; network access for the first <code>cargo build</code> to fetch the pinned crate from GitHub.</dd>
+      <dt>Command</dt><dd><pre class="code">cargo run --locked --release</pre></dd>
+      <dt>Expected time</dt><dd>First build about 2.2 s including the git fetch; a warm run well under a second. Measured 2026-09-05 on one Windows 11 machine under WSL with Rust 1.97.1. Your numbers will differ.</dd>
+      <dt>Model cost</dt><dd>None. No model or provider is involved.</dd>
+      <dt>Safe defaults</dt><dd>Nothing is written to disk by the program; no network is used beyond Cargo fetching the crate; no credentials, environment variables, or game files are read.</dd>
+      <dt>What it shows</dt><dd>One valid <code>sts2_get_state</code> call mapping to exactly one <code>GET /v1/instances/instance-1/state</code> with both <code>x-mcp-request-id</code> and <code>x-mcp-session-id</code> and no body; a truncated frame rejected with <code>-32700</code> before the adapter is reached; an unsupported capability rejected with <code>-32601</code> without forwarding; a gateway <code>Unauthorized</code> mapped to <code>-32001</code> after exactly one forward. The program checks every expectation itself and exits non-zero if any fails.</dd>
+    </dl>
+    <h3>Compare hashes</h3>
+    <p>Stdout is a single JSON document that must match <a href="recipes/mcp-seam/fixture.json">fixture.json</a> byte for byte (SHA-256 <code>158b964ec7c3647e96283b660ed5d0e6285f7c94314d0d1911a0c37998ecc5cd</code>).</p>
+<pre class="code">cargo run --locked --release &gt; out.json
+sha256sum out.json fixture.json                       # Linux, macOS, Git Bash
+Get-FileHash out.json, fixture.json -Algorithm SHA256 # PowerShell 7</pre>
+    <p class="small">Use a plain <code>&gt;</code> redirect. <code>Out-File</code> rewrites line endings and will not match. CI reproduces this fixture on Linux and compares it with <code>cmp</code> on every pull request.</p>
+    <h3>What it does not prove</h3>
+    <ul>
+      <li>Live MCP transport: no socket, pipe, or stdio framing loop is opened (<span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span>).</li>
+      <li>Any gateway connection: the adapter is a fake, so no gateway process, port, or credential is involved.</li>
+      <li>Live Slay the Spire 2 compatibility, or behaviour against any real game process or host.</li>
+      <li>Anything about game files or a model provider: none are read, needed, included, or used.</li>
     </ul>
   </div>
 </section>
