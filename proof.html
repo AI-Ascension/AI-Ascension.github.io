@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Proof — AI-Ascension</title>
-<meta name="description" content="Deterministic replay of the sts2-gateway lease fence at e7bce21: seven steps, stale epochs and wrong instances denied before transport. Not live game play.">
+<meta name="description" content="Deterministic replay of the sts2-gateway lease fence at e7bce21: eight steps, stale epochs, wrong instances and wrong callers denied before transport. Not live game play.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://ai-ascension.github.io/proof.html">
 <link rel="icon" href="assets/identity/favicon.svg" type="image/svg+xml">
@@ -14,14 +14,14 @@
 <meta property="og:site_name" content="AI-Ascension">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Proof — AI-Ascension">
-<meta property="og:description" content="Deterministic replay of the sts2-gateway lease fence at e7bce21: seven steps, stale epochs and wrong instances denied before transport. Not live game play.">
+<meta property="og:description" content="Deterministic replay of the sts2-gateway lease fence at e7bce21: eight steps, stale epochs, wrong instances and wrong callers denied before transport. Not live game play.">
 <meta property="og:image" content="https://ai-ascension.github.io/assets/identity/proof-card.png">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="640">
 <meta property="og:url" content="https://ai-ascension.github.io/proof.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Proof — AI-Ascension">
-<meta name="twitter:description" content="Deterministic replay of the sts2-gateway lease fence at e7bce21: seven steps, stale epochs and wrong instances denied before transport. Not live game play.">
+<meta name="twitter:description" content="Deterministic replay of the sts2-gateway lease fence at e7bce21: eight steps, stale epochs, wrong instances and wrong callers denied before transport. Not live game play.">
 <meta name="twitter:image" content="https://ai-ascension.github.io/assets/identity/proof-card.png">
 <link rel="stylesheet" href="assets/identity/tokens.css">
 <link rel="stylesheet" href="assets/site.css">
@@ -75,6 +75,7 @@
       <li><button type="button" aria-label="Go to step 5">5</button></li>
       <li><button type="button" aria-label="Go to step 6">6</button></li>
       <li><button type="button" aria-label="Go to step 7">7</button></li>
+      <li><button type="button" aria-label="Go to step 8">8</button></li>
     </ol>
   </div>
   <div class="body">
@@ -86,12 +87,12 @@
       <button class="button button--ghost" type="button" id="prev" disabled>Previous</button>
       <button class="button button--ghost" type="button" id="reset" disabled>Reset</button>
     </div>
-    <p class="keys">Keyboard: <kbd>Space</kbd> run/pause · <kbd>→</kbd> or <kbd>J</kbd> next · <kbd>←</kbd> or <kbd>K</kbd> previous · <kbd>R</kbd> reset. Run advances one step every 5 seconds; with reduced motion it shows all seven at once.</p>
-    <p class="live" id="live" aria-live="polite" role="status">Ready. Seven steps; press Run or Step.</p>
-    <noscript><p class="note">This replay needs JavaScript to step through the fixture. Without it, read the same seven steps in <a href="recipes/gateway-lease-fence/fixture.json">fixture.json</a> or run the <a href="recipes.html">cargo recipe</a>.</p></noscript>
+    <p class="keys">Keyboard: <kbd>Space</kbd> run/pause · <kbd>→</kbd> or <kbd>J</kbd> next · <kbd>←</kbd> or <kbd>K</kbd> previous · <kbd>R</kbd> reset. Run advances one step every 5 seconds; with reduced motion it shows all eight at once.</p>
+    <p class="live" id="live" aria-live="polite" role="status">Ready. Eight steps; press Run or Step.</p>
+    <noscript><p class="note">This replay needs JavaScript to step through the fixture. Without it, read the same eight steps in <a href="recipes/gateway-lease-fence/fixture.json">fixture.json</a> or run the <a href="recipes.html">cargo recipe</a>.</p></noscript>
     <ol class="trace" id="trace" aria-label="Replay trace"></ol>
     <div class="summary" id="summary" hidden>
-      <strong>Summary (from the fixture):</strong> steps 7 · allowed 3 · denied before transport 2 · denied by limit 1 · released 1 · transport calls total 1 · all expectations met.
+      <strong>Summary (from the fixture):</strong> steps 8 · allowed 3 · denied before transport 3 · denied by limit 1 · released 1 · transport calls total 1 · all expectations met.
     </div>
     <p class="counter" id="runs">runs in this browser: 0 started · 0 completed</p>
     <p class="small">The counter is stored only in this browser's local storage and never leaves it. There is no analytics, no cookie, and no request of any kind.</p>
@@ -102,8 +103,8 @@
   <div class="label">Fixture<span class="sub">embedded inline</span></div>
   <div class="body">
     <h2 id="fixture-title">Where the data comes from</h2>
-    <p>The seven steps are read from a JSON fixture embedded in this page. It is a byte-for-byte copy of <a href="recipes/gateway-lease-fence/fixture.json">recipes/gateway-lease-fence/fixture.json</a>, the expected stdout of the cargo recipe.</p>
-    <p class="mono">sha256 <code>1115b6f6fab379ddf161614d783c65f92be11f2fbcfcc41d3b12fc648fa6695d</code></p>
+    <p>The eight steps are read from a JSON fixture embedded in this page. It is a byte-for-byte copy of <a href="recipes/gateway-lease-fence/fixture.json">recipes/gateway-lease-fence/fixture.json</a>, the expected stdout of the cargo recipe.</p>
+    <p class="mono">sha256 <code>68f8180b2110b92bdcc283bcbbaf4461bda4ba66e9a7bce78151b6409dcdc769</code></p>
     <p>Source tests, at the pinned commit: <a href="https://github.com/AI-Ascension/sts2-gateway/blob/e7bce21d0cbd48a02c25d6463a3376ea1c94e253/crates/gateway/tests/control_plane.rs">crates/gateway/tests/control_plane.rs</a>. Every step links to the test it mirrors. To reproduce the trace yourself, <a href="recipes.html">run the recipe</a>.</p>
   </div>
 </section>
@@ -229,6 +230,28 @@ Not affiliated with Mega Crit or Valve.</textarea>
     },
     {
       "n": 5,
+      "action": "forward_wrong_caller",
+      "input": {
+        "target_instance_id": 1,
+        "proof": {
+          "instance_id": 1,
+          "caller_id": 8,
+          "session_id": 11,
+          "lease_id": 1,
+          "epoch": 1
+        },
+        "operation_id": 3,
+        "route": "Command",
+        "body_len": 1
+      },
+      "result": "Err(Fence(WrongCaller))",
+      "transport_calls": 0,
+      "boundary": "gateway.forward → lease fence (before TransportPort)",
+      "decision": "denied-before-transport",
+      "source_test": "identity::evaluate_fence"
+    },
+    {
+      "n": 6,
       "action": "forward_valid",
       "input": {
         "target_instance_id": 1,
@@ -239,7 +262,7 @@ Not affiliated with Mega Crit or Valve.</textarea>
           "lease_id": 1,
           "epoch": 1
         },
-        "operation_id": 3,
+        "operation_id": 4,
         "route": "Receipt",
         "body_len": 2
       },
@@ -250,7 +273,7 @@ Not affiliated with Mega Crit or Valve.</textarea>
       "source_test": "fixed_transport_is_bounded_and_fail_closed"
     },
     {
-      "n": 6,
+      "n": 7,
       "action": "forward_body_too_large",
       "input": {
         "target_instance_id": 1,
@@ -261,7 +284,7 @@ Not affiliated with Mega Crit or Valve.</textarea>
           "lease_id": 1,
           "epoch": 1
         },
-        "operation_id": 4,
+        "operation_id": 5,
         "route": "Command",
         "body_len": 9
       },
@@ -272,7 +295,7 @@ Not affiliated with Mega Crit or Valve.</textarea>
       "source_test": "fixed_transport_is_bounded_and_fail_closed"
     },
     {
-      "n": 7,
+      "n": 8,
       "action": "release_status",
       "input": {
         "proof": {
@@ -291,9 +314,9 @@ Not affiliated with Mega Crit or Valve.</textarea>
     }
   ],
   "summary": {
-    "steps": 7,
+    "steps": 8,
     "allowed": 3,
-    "denied_before_transport": 2,
+    "denied_before_transport": 3,
     "denied_by_limit": 1,
     "released": 1,
     "transport_calls_total": 1,

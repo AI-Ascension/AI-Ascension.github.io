@@ -10,7 +10,7 @@ test('embedded fixture preserves canonical bytes', () => {
   const inline = html.match(/<script type="application\/json" id="fixture">([\s\S]*?)<\/script>/)[1];
   const fixture = fs.readFileSync(path.join(root, 'recipes/gateway-lease-fence/fixture.json'), 'utf8');
   assert.equal(inline, fixture);
-  assert.equal(crypto.createHash('sha256').update(fixture).digest('hex'), '1115b6f6fab379ddf161614d783c65f92be11f2fbcfcc41d3b12fc648fa6695d');
+  assert.equal(crypto.createHash('sha256').update(fixture).digest('hex'), '68f8180b2110b92bdcc283bcbbaf4461bda4ba66e9a7bce78151b6409dcdc769');
 });
 
 test('entry-page local links and fragments resolve', () => {

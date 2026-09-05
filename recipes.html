@@ -72,7 +72,7 @@
       <dt>What it shows</dt><dd>Two instances allocated and reconciled to <code>Ready</code>; a stale epoch denied (<code>Fence(StaleEpoch)</code>) before the transport; a wrong instance denied (<code>Fence(WrongInstance)</code>); one valid forward returning 200 with exactly one transport call; a 9-byte body rejected against an 8-byte limit; a graceful release. The program checks every expectation itself and exits non-zero if any fails.</dd>
     </dl>
     <h3>Compare hashes</h3>
-    <p>Stdout is a single JSON document that must match <a href="recipes/gateway-lease-fence/fixture.json">fixture.json</a> byte for byte (SHA-256 <code>1115b6f6fab379ddf161614d783c65f92be11f2fbcfcc41d3b12fc648fa6695d</code>).</p>
+    <p>Stdout is a single JSON document that must match <a href="recipes/gateway-lease-fence/fixture.json">fixture.json</a> byte for byte (SHA-256 <code>68f8180b2110b92bdcc283bcbbaf4461bda4ba66e9a7bce78151b6409dcdc769</code>).</p>
 <pre class="code">cargo run --locked --release &gt; out.json
 sha256sum out.json fixture.json                       # Linux, macOS, Git Bash
 Get-FileHash out.json, fixture.json -Algorithm SHA256 # PowerShell 7</pre>
