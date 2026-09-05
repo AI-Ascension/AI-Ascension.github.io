@@ -61,11 +61,11 @@
   </figure>
   <div class="hero__panel">
     <h1 id="hero-title">Inspect how AI requests to a game get fenced, one Rust contract at a time.</h1>
-    <p class="status">Today: deterministic, in-memory contract tests you can replay here and re-run with cargo. Proposed: a live Slay the Spire 2 path through mod, gateway, MCP adapter, and harness. <strong>Runtime and game compatibility: unverified.</strong></p>
+    <p class="status">Replay a pinned, deterministic gateway contract here and re-run it with cargo. Later repositories include a <a href="evidence.html#current">dated, bounded host-probe report</a> through harness, MCP, gateway, and mod. <strong>Reliable autonomous gameplay is not established.</strong></p>
     <div class="stamps" role="group" aria-label="Evidence status">
-      <span><span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span> <span class="who">runtime · host · game</span></span>
+      <span><span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span> <span class="who">reliable autonomous gameplay</span></span>
       <span><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span> <span class="who">deterministic tests at pinned commits</span></span>
-      <span><span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span> <span class="who">live path</span></span>
+      <span><span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span> <span class="who">full autonomous gameplay</span></span>
     </div>
     <div class="cta">
       <a class="button" href="proof.html">Run the 45-second proof</a>
@@ -89,11 +89,11 @@
   <div class="label">The ascent<span class="sub">read bottom to top</span></div>
   <div class="body">
     <h2 id="ascent-title">The ascent</h2>
-    <p>The proposed runtime path, top tier first as printed and read from the bottom up. Each repository row carries its approved description and a stamp for what is tested today. The two endpoints are not repositories.</p>
+    <p>The proposed runtime path, top tier first as printed and read from the bottom up. The repository descriptions and test stamps below are the historical 2026-09-02 foundation snapshot; they are not current capability ceilings. See <a href="evidence.html#current">later host evidence</a>. The two endpoints are not repositories.</p>
     <ol class="ascent" data-reveal reversed>
       <li class="tier tier--endpoint">
         <span class="tier__n">tier 5 · endpoint</span>
-        <div><p class="tier__name">model / provider</p><p class="tier__desc">A pluggable model-provider interface exists in the harness; no provider is called anywhere today. Model cost: none.</p>
+        <div><p class="tier__name">model / provider</p><p class="tier__desc">A pluggable model-provider interface exists in the harness; the pinned proof calls no provider. Model cost for this proof: none.</p>
         <div class="tier__meta"><span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span> <span>no provider execution is claimed</span></div></div>
       </li>
       <li class="tier tier--repo">
@@ -114,11 +114,11 @@
       <li class="tier tier--repo">
         <span class="tier__n">tier 1 · repository</span>
         <div><p class="tier__name"><a href="https://github.com/AI-Ascension/sts2-game-mod">sts2-game-mod</a></p><p class="tier__desc">Game-process adapter: a bounded main-thread work queue, versioned ABI check, and HTTP request admission limits.</p>
-        <div class="tier__meta"><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span> <span>queue, dispatcher, ABI descriptor validation, transport-free admission guard</span> <span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span> <span>no game launched, no loader, no listener</span></div></div>
+        <div class="tier__meta"><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span> <span>queue, dispatcher, ABI descriptor validation, transport-free admission guard</span> <span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span> <span>this foundation test used no game, loader, or listener</span></div></div>
       </li>
       <li class="tier tier--endpoint">
         <span class="tier__n">tier 0 · authority</span>
-        <div><p class="tier__name">game host</p><p class="tier__desc">The game process keeps authority. Nothing here launches, patches, or connects to it today.</p>
+        <div><p class="tier__name">game host</p><p class="tier__desc">The game process keeps authority. The browser proof never launches or connects to it; later bounded host evidence is recorded separately.</p>
         <div class="tier__meta"><span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span> <span>host and game compatibility</span></div></div>
       </li>
     </ol>
@@ -148,9 +148,9 @@
 <section class="row row--hover" id="path-player" aria-labelledby="path-player-title">
   <div class="label">Player<span class="sub">curious player / observer</span></div>
   <div class="body">
-    <h3 id="path-player-title">Nothing here touches a game yet; you can watch exactly what is tested today and what is only proposed.</h3>
+    <h3 id="path-player-title">The browser proof touches no game; inspect its exact boundary and the separate host evidence.</h3>
     <dl class="kv">
-      <dt>Objection</dt><dd>“Is this a cheat/bot for the game?” — No: no game files, no live game path, host stays authoritative.</dd>
+      <dt>Objection</dt><dd>“Is this a cheat/bot for the game?” — This proof uses no game files or live host. The organization also develops opt-in host adapters; the host remains authoritative.</dd>
       <dt>First win</dt><dd>See the denial line and the stamp that says <code>unverified</code> for live play.</dd>
       <dt>Proof frame</dt><dd>Stale lease fenced before transport.</dd>
       <dt>Do this</dt><dd><a href="proof.html">Run the proof</a></dd>
@@ -205,27 +205,27 @@
 <section class="row" aria-labelledby="tested-title">
   <div class="label">Tested vs proposed</div>
   <div class="body">
-    <h2 id="tested-title">What is tested today, what is only proposed</h2>
+    <h2 id="tested-title">Historical foundation tests and remaining goals</h2>
     <div class="two-col">
       <div class="col">
-        <h3><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span> Tested today</h3>
+        <h3><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span> Tested at the pinned foundation revisions</h3>
         <ul>
           <li>Gateway: lease and epoch fencing (<code>StaleEpoch</code>, <code>WrongInstance</code>, <code>WrongCaller</code>, <code>WrongSession</code>, <code>WrongLease</code>, <code>Missing</code>, <code>Expired</code>), fixed routes, body and response byte limits, fail-closed on process, readiness, and transport faults. In memory, with injected fakes.</li>
           <li>MCP adapter: one tool call maps to exactly one gateway request; malformed JSON, invalid params, and unsupported capabilities are rejected before the gateway.</li>
           <li>Game mod: bounded main-thread queue, versioned ABI descriptor validation, transport-free HTTP admission guard.</li>
           <li>Harness: retry with idempotency, record and replay, artifact lineage, bounded shutdown — against deterministic fakes.</li>
           <li>Core and protocol: pure validation with no mutation; golden vectors reproducible.</li>
-          <li>All six trees: Rust only, checked by a policy tool; tests pass locally at the pinned commits.</li>
+          <li>The six foundation Rust workspaces had policy and local test checks at the pinned commits. Current repositories include documented non-Rust integration and tooling.</li>
         </ul>
       </div>
       <div class="col">
         <h3><span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span> Proposed only <span class="visually-hidden">and</span> <span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span></h3>
         <ul>
-          <li>A live Slay the Spire 2 path through mod, gateway, MCP adapter, and harness — and the four-model live race described at <a href="https://aiascension.tech/" rel="external">aiascension.tech</a>, which this path is built for.</li>
-          <li>Any listener, process supervisor, game connection, or authentication at an external boundary.</li>
+          <li>Reliable autonomous gameplay through mod, gateway, MCP adapter, and harness — and the four-model live race described at <a href="https://aiascension.tech/" rel="external">aiascension.tech</a>, which this path is built for.</li>
+          <li>Production assurance for listener authentication, process lifecycle, and game connections; source implementation and a bounded host probe are not that assurance.</li>
           <li>Isolation under real concurrency; host compatibility; any release.</li>
-          <li>A managed loader, a real host adapter, a route catalog, domain behavior, and packaging.</li>
-          <li>Provider execution, live MCP transport, replay fidelity against a game, scoring, training.</li>
+          <li>Validated current-package host gameplay, beyond the historical overlay probe; full rule coverage and release support.</li>
+          <li>Provider-backed gameplay through current-package MCP transport, replay fidelity against a game, scoring, and training. The dated host probe exercised a narrower live MCP path without a provider.</li>
           <li>Traction of any kind: unknown, not zero.</li>
         </ul>
       </div>
@@ -235,7 +235,7 @@
 </section>
 </main>
 <footer class="site-foot">
-  <p class="status-line">Status: runtime unverified · deterministic tests confirmed</p>
+  <p class="status-line">Status: pinned deterministic proof · <a href="evidence.html#current">bounded host evidence and current limits</a></p>
   <p>AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.</p>
   <ul class="foot-links">
     <li><a href="https://github.com/AI-Ascension">GitHub organization</a></li>

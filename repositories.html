@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Repositories — AI-Ascension</title>
-<meta name="description" content="Eight AI-Ascension repositories with approved descriptions, pinned commits, CI results as observed on 2026-09-02, and evidence stamps.">
+<meta name="description" content="Nine AI-Ascension repositories, a historical pinned proof snapshot, and links to later bounded host evidence.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://ai-ascension.github.io/repositories.html">
 <link rel="icon" href="assets/identity/favicon.svg" type="image/svg+xml">
@@ -14,14 +14,14 @@
 <meta property="og:site_name" content="AI-Ascension">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Repositories — AI-Ascension">
-<meta property="og:description" content="Eight AI-Ascension repositories with approved descriptions, pinned commits, CI results as observed on 2026-09-02, and evidence stamps.">
+<meta property="og:description" content="Nine AI-Ascension repositories, a historical pinned proof snapshot, and links to later bounded host evidence.">
 <meta property="og:image" content="https://ai-ascension.github.io/assets/identity/social/ai-ascension.github.io.png">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="640">
 <meta property="og:url" content="https://ai-ascension.github.io/repositories.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Repositories — AI-Ascension">
-<meta name="twitter:description" content="Eight AI-Ascension repositories with approved descriptions, pinned commits, CI results as observed on 2026-09-02, and evidence stamps.">
+<meta name="twitter:description" content="Nine AI-Ascension repositories, a historical pinned proof snapshot, and links to later bounded host evidence.">
 <meta name="twitter:image" content="https://ai-ascension.github.io/assets/identity/social/ai-ascension.github.io.png">
 <link rel="stylesheet" href="assets/identity/tokens.css">
 <link rel="stylesheet" href="assets/site.css">
@@ -53,8 +53,8 @@
 <section class="row row--first" aria-labelledby="repos-title">
   <div class="label">Repositories</div>
   <div class="body">
-    <h1 id="repos-title">Eight repositories, one map.</h1>
-    <p>Six product repositories, the organization's community files, and this site. Descriptions are the approved text used everywhere; commits are the pinned heads of <code>main</code>; CI results are as observed on 2026-09-02, failures included.</p>
+    <h1 id="repos-title">Nine repositories, with dated evidence.</h1>
+    <p>Six product repositories, observability, community files, and this site. The six product entries below preserve the early 2026-09-02 proof snapshot: their pins, descriptions, CI failures, and capability limits are historical, not current main. See <a href="evidence.html#current">the current evidence update</a> and each repository’s current README.</p>
   </div>
 </section>
 
@@ -130,13 +130,24 @@
   </div>
 </section>
 
+<section class="row row--hover" id="observability" aria-labelledby="h-observability">
+  <div class="label">ai-agent-observability<span class="sub">telemetry, beside the runtime path</span></div>
+  <div class="body">
+    <h2 id="h-observability">ai-agent-observability</h2>
+    <p>Self-hosted telemetry configuration, bootstrap and validation tooling for OpenTelemetry fan-out to MLflow and Laminar with supporting storage services.</p>
+    <p class="mono">reviewed main: <code>8b6a47cedfef3b28f972437d7a1baaa201681a91</code> (2026-09-04).</p>
+    <p>Source-derived configuration scope; not a claim that a deployment was started or its operational behavior reproduced by this site review.</p>
+    <div class="repo-links"><a href="https://github.com/AI-Ascension/ai-agent-observability">GitHub</a><a href="https://github.com/AI-Ascension/ai-agent-observability/blob/8b6a47cedfef3b28f972437d7a1baaa201681a91/README.md">Pinned README</a></div>
+  </div>
+</section>
+
 <section class="row row--hover" id="dot-github" aria-labelledby="h-dotgithub">
   <div class="label">.github<span class="sub">organization profile</span></div>
   <div class="body">
     <h2 id="h-dotgithub">.github</h2>
     <p>Contributor guide, issue forms, security policy, and shared standards for the AI-Ascension organization.</p>
-    <p class="mono">pinned: not yet published at the time this page was written; the head of <code>main</code> will be recorded once the repository exists on GitHub.</p>
-    <p class="ci">CI: no workflow. Status: <span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span> until the repository is created.</p>
+    <p class="mono">reviewed main: <code>280138c5b9d8275734bf5971b029403896ce8593</code> (2026-09-04).</p>
+    <p class="ci">Published community files; no workflow at the reviewed main revision.</p>
     <div class="repo-links"><a href="https://github.com/AI-Ascension/.github">GitHub</a><a href="https://github.com/AI-Ascension/.github/blob/main/CONTRIBUTING.md">CONTRIBUTING</a><a href="https://github.com/AI-Ascension/.github/blob/main/SECURITY.md">SECURITY</a></div>
   </div>
 </section>
@@ -146,8 +157,8 @@
   <div class="body">
     <h2 id="h-site">AI-Ascension.github.io</h2>
     <p>Public site for AI-Ascension: what is tested today, what is only proposed, and a browser replay of one gateway contract test.</p>
-    <p class="mono">pinned: not yet published at the time this page was written; hand-authored HTML, CSS, and vanilla JavaScript with no build step.</p>
-    <p class="ci">CI: a GitHub Pages deploy workflow with pinned action SHAs; no tests beyond the recipe's own checks. Status: <span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span> until deployed.</p>
+    <p class="mono">reviewed main: <code>ca89c46712c7ef3ead701daf33f4c544b72c5b3e</code> (2026-09-04); hand-authored HTML, CSS, and vanilla JavaScript with no build step.</p>
+    <p class="ci">At the reviewed base, CI only deployed Pages; the recipe checked its own expectations. This update adds separate read-only validation of replay controls, local links, embedded fixture bytes, and the pinned Rust recipe. Publishing changes to main triggers Pages deployment; this review does not redeploy the site.</p>
     <div class="repo-links"><a href="https://github.com/AI-Ascension/AI-Ascension.github.io">GitHub</a><a href="https://github.com/AI-Ascension/AI-Ascension.github.io/blob/main/README.md">README</a><a href="recipes.html">Recipes</a></div>
   </div>
 </section>
@@ -155,13 +166,13 @@
 <section class="row" aria-labelledby="ci-note-title">
   <div class="label">CI notes</div>
   <div class="body">
-    <h2 id="ci-note-title">About the failures</h2>
+    <h2 id="ci-note-title">Historical failures, not current readiness</h2>
     <p>Three repositories fail a check on <code>main</code> as of 2026-09-02. All three causes are pre-existing and sit in files outside this presence work: two are README links that point outside the repository (<code>game-core</code>, <code>gateway</code>), and one is an escaped expression in both workflow files (<code>game-mod</code>) that prevents any job from running. The workspace tests for every repository pass locally with <code>cargo test --workspace --all-targets --all-features --locked --offline</code> and the policy tool reports zero errors locally. Traction (stars, forks, users) is unknown and is not reported here.</p>
   </div>
 </section>
 </main>
 <footer class="site-foot">
-  <p class="status-line">Status: runtime unverified · deterministic tests confirmed</p>
+  <p class="status-line">Status: pinned deterministic proof · <a href="evidence.html#current">bounded host evidence and current limits</a></p>
   <p>AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.</p>
   <ul class="foot-links">
     <li><a href="https://github.com/AI-Ascension">GitHub organization</a></li>

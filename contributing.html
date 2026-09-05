@@ -97,7 +97,7 @@
     <h2 id="c-security">Check one claim-to-test mapping</h2>
     <p><strong>One repository:</strong> <a href="https://github.com/AI-Ascension/sts2-gateway">sts2-gateway</a> at <code>e7bce21</code>.</p>
     <p><strong>First safe task:</strong> take one row of the <a href="evidence.html#claims">claim ledger</a> — for example row 4, fail-closed on readiness and crash — open the named test at the pinned commit, and confirm or refute that the test establishes the sentence as written. Report the result either way. Bounded: one row, one test.</p>
-    <p><strong>Use:</strong> the <a href="https://github.com/AI-Ascension/.github/issues/new?template=evidence.yml">evidence form</a> for a mapping result or a failure-handling observation. For anything that could be a vulnerability, do not open a public issue: follow <a href="https://github.com/AI-Ascension/.github/blob/main/SECURITY.md">SECURITY.md</a> and report privately. There is no listener or process supervisor yet, so there is no exposed surface to probe.</p>
+    <p><strong>Use:</strong> the <a href="https://github.com/AI-Ascension/.github/issues/new?template=evidence.yml">evidence form</a> for a mapping result or a failure-handling observation. For anything that could be a vulnerability, do not open a public issue: follow <a href="https://github.com/AI-Ascension/.github/blob/main/SECURITY.md">SECURITY.md</a> and report privately. The pinned proof exposes no listener or process supervisor; later default-branch source does include runtime listeners (source-derived), so treat any exposed surface you find as in scope for private reporting.</p>
   </div>
 </section>
 
@@ -108,7 +108,7 @@
     <ul>
       <li>Stars, shares, follows, and referrals are never required, asked for, or counted as contribution.</li>
       <li>No game files, assets, or marks may be submitted. No credentials in any issue.</li>
-      <li>Product trees are Rust only; a policy tool enforces it.</li>
+      <li>Rust product crates have repository policy checks. Follow each repository’s instructions and documented exceptions: managed C#, launcher scripts, static-site code, and observability tooling also exist.</li>
       <li>Every claim you add needs a label and a file, test, or command behind it.</li>
       <li>Defects in the site or the recipe go to the <a href="https://github.com/AI-Ascension/.github/issues/new?template=defect.yml">defect form</a>.</li>
     </ul>
@@ -116,7 +116,7 @@
 </section>
 </main>
 <footer class="site-foot">
-  <p class="status-line">Status: runtime unverified · deterministic tests confirmed</p>
+  <p class="status-line">Status: pinned deterministic proof · <a href="evidence.html#current">bounded host evidence and current limits</a></p>
   <p>AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.</p>
   <ul class="foot-links">
     <li><a href="https://github.com/AI-Ascension">GitHub organization</a></li>

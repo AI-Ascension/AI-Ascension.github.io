@@ -54,7 +54,7 @@
   <div class="label">Architecture</div>
   <div class="body">
     <h1 id="arch-title">Six tiers, read from the bottom up.</h1>
-    <p>The runtime topology is a proposal. What exists today at each tier is an in-memory seam with deterministic tests; no tier is connected to a live neighbour. The host keeps authority throughout.</p>
+    <p>This diagram and boundary table preserve the 2026-09-02 foundation snapshot used by the pinned proof. They are not a current inventory: later repositories contain runtime executables, managed loading and a bounded host-probe report. See <a href="evidence.html#current">the dated update and its limits</a>. The host keeps authority throughout.</p>
     <p class="small"><span class="stamp stamp--proposed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-proposed"/></svg>proposed</span> <span class="who">topology</span> · <span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span> <span class="who">per-tier seams, in memory</span> · <span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span> <span class="who">runtime, host, game</span></p>
   </div>
 </section>
@@ -69,16 +69,16 @@
       <desc id="topo-svg-desc">Six nodes stacked vertically: game host at the bottom (authority), then sts2-game-mod, sts2-gateway, sts2-mcp-server, sts2-harness, and model/provider at the top. Arrows between nodes are labelled with what crosses. sts2-game-core and sts2-protocol sit beside the stack, not on the path.</desc>
       <defs><marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" style="fill:var(--ink-dim)"/></marker></defs>
       <line class="spire" x1="170" y1="10" x2="170" y2="730"/>
-      <g transform="translate(190 20)"><rect class="box" width="260" height="56"/><text x="12" y="24">model / provider</text><text class="dim" x="12" y="42">endpoint · none called today</text></g>
+      <g transform="translate(190 20)"><rect class="box" width="260" height="56"/><text x="12" y="24">model / provider</text><text class="dim" x="12" y="42">endpoint · none in this proof</text></g>
       <path class="arrow" d="M320 150V78"/><text class="dim" x="330" y="120">ModelRequest / ModelResponse (provider port)</text>
       <g transform="translate(190 150)"><rect class="box box--repo" width="260" height="56"/><text x="12" y="24">sts2-harness</text><text class="dim" x="12" y="42">episodes · retry · record/replay · lineage</text></g>
       <path class="arrow" d="M320 280V208"/><text class="dim" x="330" y="250">tools/call sts2_get_state (JSON-RPC)</text>
       <g transform="translate(190 280)"><rect class="box box--repo" width="260" height="56"/><text x="12" y="24">sts2-mcp-server</text><text class="dim" x="12" y="42">one call → one gateway request</text></g>
       <path class="arrow" d="M320 410V338"/><text class="dim" x="330" y="380">GET /v1/instances/{id}/state + lease proof</text>
       <g transform="translate(190 410)"><rect class="box box--repo" width="260" height="56"/><text x="12" y="24">sts2-gateway</text><text class="dim" x="12" y="42">lease · epoch fence · fixed routes · limits</text></g>
-      <path class="arrow" d="M320 540V468"/><text class="dim" x="330" y="510">forward via TransportPort (fake today)</text>
+      <path class="arrow" d="M320 540V468"/><text class="dim" x="330" y="510">forward via TransportPort (foundation fake)</text>
       <g transform="translate(190 540)"><rect class="box box--repo" width="260" height="56"/><text x="12" y="24">sts2-game-mod</text><text class="dim" x="12" y="42">bounded queue · ABI check · admission</text></g>
-      <path class="arrow" d="M320 670V598"/><text class="dim" x="330" y="640">HostRequest on the main thread (fake host today)</text>
+      <path class="arrow" d="M320 670V598"/><text class="dim" x="330" y="640">HostRequest on the main thread (foundation fake host)</text>
       <g transform="translate(190 670)"><rect class="box" width="260" height="56"/><text x="12" y="24">game host</text><text class="dim" x="12" y="42">authority stays here · not connected</text></g>
       <text class="dim" x="20" y="700">authority</text>
       <text class="dim" x="20" y="60">beside the ascent</text>
@@ -88,7 +88,7 @@
       <text class="dim" x="20" y="400">read bottom to top ↑</text>
     </svg>
     </div>
-    <p class="small">What crosses each arrow is source-derived from the repositories' README and ARCHITECTURE documents. Today every arrow ends at an injected fake; no two tiers run against each other.</p>
+    <p class="small">What crosses each arrow is source-derived from the repositories' README and ARCHITECTURE documents. The historical foundation tests ended at injected fakes; the later bounded host trace crosses the harness-to-host stack, but does not establish full autonomous gameplay.</p>
   </div>
 </section>
 
@@ -98,7 +98,7 @@
     <h2 id="bounds-title">Boundary table</h2>
     <div class="tbl tbl--wide">
     <table>
-      <thead><tr><th>Repository</th><th>Owns</th><th>Does not own</th><th>Confirmed today</th><th>Unverified</th></tr></thead>
+      <thead><tr><th>Repository</th><th>Owns</th><th>Does not own</th><th>Historical foundation tests</th><th>Unverified</th></tr></thead>
       <tbody>
         <tr><td><a href="repositories.html#sts2-game-core">sts2-game-core</a></td><td>Host-independent domain: typed <code>Identity/Generation/Phase/State/Action/Request</code>; pure <code>validate</code>; policy rules with no I/O</td><td>Any host, loader, HTTP, MCP, gateway, provider, save format</td><td>Pure validate returning an accepted proposal or structured rejection; golden vectors reproducible ×64</td><td>Any host, loader, HTTP, MCP, gateway, provider, save-format, or game-mechanics compatibility</td></tr>
         <tr><td><a href="repositories.html#sts2-game-mod">sts2-game-mod</a></td><td>Game-process adapter: host port, bounded main-thread queue, dispatcher, versioned ABI descriptor, transport-free HTTP admission guard, composition seam</td><td>A managed loader, a real host adapter, a route catalog, domain behavior, packaging</td><td>Queue, dispatcher, ABI validation, admission guard; source-only .NET 9 ↔ Rust C-ABI experiment</td><td>Game launched, loader discovered, host assembly stored, listener exposed, real main-thread mutation</td></tr>
@@ -109,7 +109,7 @@
       </tbody>
     </table>
     </div>
-    <p class="small">Wording follows the frozen facts ledger's claim ceilings; nothing stronger appears on any public surface.</p>
+    <p class="small">This frozen foundation table describes only the pinned revisions. Later implementations and reported host checks are listed separately in the current evidence update.</p>
   </div>
 </section>
 
@@ -123,12 +123,12 @@
       <dt>Fixed route</dt><dd>A forward names one of three routes — <code>ReadOnly</code>, <code>Command</code>, <code>Receipt</code> — rather than an arbitrary path. There is no route catalog to extend at runtime.</dd>
       <dt>Fail closed</dt><dd>When a process, readiness, or transport port reports a fault, the gateway refuses further work on that instance instead of guessing. Shutdown closes admission. Denial is the default outcome of doubt.</dd>
     </dl>
-    <p>All four are shown in the <a href="proof.html">proof replay</a> and mapped to tests on the <a href="evidence.html">evidence page</a>.</p>
+    <p>The proof replay demonstrates lease fencing, fixed routes, size limits, and release. Additional failure cases are mapped to source tests on the <a href="evidence.html">evidence page</a>; not every definition is exercised by the seven-step replay.</p>
   </div>
 </section>
 </main>
 <footer class="site-foot">
-  <p class="status-line">Status: runtime unverified · deterministic tests confirmed</p>
+  <p class="status-line">Status: pinned deterministic proof · <a href="evidence.html#current">bounded host evidence and current limits</a></p>
   <p>AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.</p>
   <ul class="foot-links">
     <li><a href="https://github.com/AI-Ascension">GitHub organization</a></li>
