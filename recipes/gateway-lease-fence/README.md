@@ -12,12 +12,16 @@ counting transport), the gateway:
 - allocates instances 1 and 2 with lease epoch 1 and reconciles both to `Ready`;
 - denies a forward carrying a stale epoch (`Fence(StaleEpoch)`) before touching the transport;
 - denies a forward whose proof names a different instance (`Fence(WrongInstance)`) before the transport;
+- denies a forward whose proof names a caller that does not hold the lease (`Fence(WrongCaller)`) before the transport;
 - forwards a valid proof once and returns the transport's status 200 (transport calls: 1);
 - rejects a 9-byte body against an 8-byte limit (`BodyTooLarge { limit: 8, actual: 9 }`) without a transport call;
 - releases instance 1 with one graceful stop, leaving it `Stopped` with no process attached.
 
 The program checks every one of those expectations itself and exits non-zero if any fails.
-Each step in the output names the product integration test it mirrors (`source_test`).
+Each step in the output names the product integration test it mirrors (`source_test`). The
+`WrongCaller` denial has no dedicated integration test; it cites `identity::evaluate_fence`,
+the function in `crates/gateway/src/identity.rs` that returns the variant when the recorded
+lease caller differs from the presented proof.
 
 ## What it does not prove (label: `unverified`)
 
@@ -42,7 +46,7 @@ one-time git fetch of the crate; a cold run after `cargo clean` about 1 s; a war
 ## Expected output
 
 Stdout is a single JSON document that must match `fixture.json` byte for byte
-(SHA-256 `1115b6f6fab379ddf161614d783c65f92be11f2fbcfcc41d3b12fc648fa6695d`). To compare:
+(SHA-256 `68f8180b2110b92bdcc283bcbbaf4461bda4ba66e9a7bce78151b6409dcdc769`). To compare:
 
 ```
 cargo run --locked --release > out.json

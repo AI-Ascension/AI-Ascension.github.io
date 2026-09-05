@@ -32,7 +32,7 @@ function replay(reduced = false) {
     ids[id] = new Element();
   }
   ids.fixture.textContent = fs.readFileSync(path.join(root, 'recipes/gateway-lease-fence/fixture.json'), 'utf8');
-  ids.progress.children = Array.from({ length: 7 }, () => new Element('button'));
+  ids.progress.children = Array.from({ length: 8 }, () => new Element('button'));
   const document = {
     getElementById: id => ids[id],
     createElement: tag => new Element(tag),
@@ -61,7 +61,7 @@ test('pause/resume counts one run; repeated completion navigation counts once', 
   const r = replay();
   r.click('run'); r.click('pause'); r.click('run'); r.click('pause');
   assert.deepEqual(r.counts(), [1, 0]);
-  r.jump(7); r.jump(7); r.key('ArrowRight');
+  r.jump(8); r.jump(8); r.key('ArrowRight');
   assert.deepEqual(r.counts(), [1, 1]);
   r.click('prev'); r.key('ArrowRight');
   assert.deepEqual(r.counts(), [1, 1]);
@@ -69,12 +69,12 @@ test('pause/resume counts one run; repeated completion navigation counts once', 
 
 test('manual stepping starts once and reset starts a distinct replay', () => {
   const r = replay();
-  for (let i = 0; i < 7; i++) r.click('step');
+  for (let i = 0; i < 8; i++) r.click('step');
   assert.deepEqual(r.counts(), [1, 1]);
   const hash = r.ids.trace.getAttribute('data-final-hash');
   r.click('reset');
   assert.equal(r.ids.trace.getAttribute('data-final-hash'), undefined);
-  r.jump(7);
+  r.jump(8);
   assert.deepEqual(r.counts(), [2, 2]);
   assert.equal(r.ids.trace.getAttribute('data-final-hash'), hash);
 });
@@ -82,7 +82,7 @@ test('manual stepping starts once and reset starts a distinct replay', () => {
 test('timer and reduced-motion runs agree; Run again counts a new replay', () => {
   const timed = replay();
   timed.click('run');
-  for (let i = 0; i < 6; i++) timed.tick();
+  for (let i = 0; i < 7; i++) timed.tick();
   assert.deepEqual(timed.counts(), [1, 1]);
   const reduced = replay(true);
   reduced.click('run');

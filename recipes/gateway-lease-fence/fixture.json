@@ -83,6 +83,28 @@
     },
     {
       "n": 5,
+      "action": "forward_wrong_caller",
+      "input": {
+        "target_instance_id": 1,
+        "proof": {
+          "instance_id": 1,
+          "caller_id": 8,
+          "session_id": 11,
+          "lease_id": 1,
+          "epoch": 1
+        },
+        "operation_id": 3,
+        "route": "Command",
+        "body_len": 1
+      },
+      "result": "Err(Fence(WrongCaller))",
+      "transport_calls": 0,
+      "boundary": "gateway.forward → lease fence (before TransportPort)",
+      "decision": "denied-before-transport",
+      "source_test": "identity::evaluate_fence"
+    },
+    {
+      "n": 6,
       "action": "forward_valid",
       "input": {
         "target_instance_id": 1,
@@ -93,7 +115,7 @@
           "lease_id": 1,
           "epoch": 1
         },
-        "operation_id": 3,
+        "operation_id": 4,
         "route": "Receipt",
         "body_len": 2
       },
@@ -104,7 +126,7 @@
       "source_test": "fixed_transport_is_bounded_and_fail_closed"
     },
     {
-      "n": 6,
+      "n": 7,
       "action": "forward_body_too_large",
       "input": {
         "target_instance_id": 1,
@@ -115,7 +137,7 @@
           "lease_id": 1,
           "epoch": 1
         },
-        "operation_id": 4,
+        "operation_id": 5,
         "route": "Command",
         "body_len": 9
       },
@@ -126,7 +148,7 @@
       "source_test": "fixed_transport_is_bounded_and_fail_closed"
     },
     {
-      "n": 7,
+      "n": 8,
       "action": "release_status",
       "input": {
         "proof": {
@@ -145,9 +167,9 @@
     }
   ],
   "summary": {
-    "steps": 7,
+    "steps": 8,
     "allowed": 3,
-    "denied_before_transport": 2,
+    "denied_before_transport": 3,
     "denied_by_limit": 1,
     "released": 1,
     "transport_calls_total": 1,

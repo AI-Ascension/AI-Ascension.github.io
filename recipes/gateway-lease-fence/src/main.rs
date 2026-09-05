@@ -8,13 +8,14 @@
 
 mod fakes;
 mod json;
+mod scenario;
 mod steps;
 
 use std::process::ExitCode;
 
 use sts2_gateway::{
-    Allocation, CallerId, FenceFailure, FixedRoute, Gateway, GatewayConfig, GatewayError,
-    InstanceId, LeaseEpoch, LeaseId, LeaseProof, LifecycleState, OperationId, SessionId, StopMode,
+    Allocation, CallerId, Gateway, GatewayConfig, InstanceId, LeaseEpoch, LeaseId, LifecycleState,
+    OperationId, SessionId, StopMode,
 };
 
 use fakes::{AlwaysReady, CallCounter, CountingTransport, FrozenClock, LedgerProcess, StopLedger};
@@ -32,8 +33,6 @@ const CALLER: CallerId = CallerId::new(7);
 const SESSION: SessionId = SessionId::new(11);
 
 const TEST_ALLOCATE: &str = "allocation_reconciles_through_readiness";
-const TEST_FENCE: &str = "stale_epoch_and_wrong_instance_are_denied_before_transport";
-const TEST_TRANSPORT: &str = "fixed_transport_is_bounded_and_fail_closed";
 const TEST_RELEASE: &str = "release_then_cleanup_removes_instance";
 
 type ReplayGateway = Gateway<FrozenClock, LedgerProcess, AlwaysReady, CountingTransport>;
@@ -190,79 +189,11 @@ fn replay() -> Result<Json, String> {
 
     let first = allocate_ready(&mut gateway, &calls, 1, 1, &mut steps)?;
     let second = allocate_ready(&mut gateway, &calls, 2, 2, &mut steps)?;
-    let stale = LeaseProof::new(
-        first.instance_id(),
-        CALLER,
-        SESSION,
-        first.lease().lease_id(),
-        LeaseEpoch::new(0),
-    );
-    let fence_boundary = "gateway.forward → lease fence (before TransportPort)";
-    let cases = [
-        ForwardCase {
-            n: 3,
-            action: "forward_stale_epoch",
-            target: first.instance_id(),
-            proof: stale,
-            operation: 1,
-            route: FixedRoute::Command,
-            body: vec![1],
-            expected: Err(GatewayError::Fence(FenceFailure::StaleEpoch)),
-            expected_calls: 0,
-            boundary: fence_boundary,
-            decision: Decision::DeniedBeforeTransport,
-            source_test: TEST_FENCE,
-        },
-        ForwardCase {
-            n: 4,
-            action: "forward_wrong_instance",
-            target: second.instance_id(),
-            proof: first.lease().proof(),
-            operation: 2,
-            route: FixedRoute::ReadOnly,
-            body: vec![1],
-            expected: Err(GatewayError::Fence(FenceFailure::WrongInstance)),
-            expected_calls: 0,
-            boundary: fence_boundary,
-            decision: Decision::DeniedBeforeTransport,
-            source_test: TEST_FENCE,
-        },
-        ForwardCase {
-            n: 5,
-            action: "forward_valid",
-            target: first.instance_id(),
-            proof: first.lease().proof(),
-            operation: 3,
-            route: FixedRoute::Receipt,
-            body: vec![2, 3],
-            expected: Ok(200),
-            expected_calls: 1,
-            boundary: "gateway.forward → TransportPort",
-            decision: Decision::Allowed,
-            source_test: TEST_TRANSPORT,
-        },
-        ForwardCase {
-            n: 6,
-            action: "forward_body_too_large",
-            target: first.instance_id(),
-            proof: first.lease().proof(),
-            operation: 4,
-            route: FixedRoute::Command,
-            body: vec![0; 9],
-            expected: Err(GatewayError::BodyTooLarge {
-                limit: MAX_BODY_BYTES,
-                actual: 9,
-            }),
-            expected_calls: 1,
-            boundary: "gateway.forward → body limit (before lease fence and TransportPort)",
-            decision: Decision::DeniedByLimit,
-            source_test: TEST_TRANSPORT,
-        },
-    ];
+    let cases = scenario::forward_cases(&first, &second, CALLER, SESSION, MAX_BODY_BYTES);
     for case in cases {
         forward(&mut gateway, &calls, case, &mut steps)?;
     }
-    release(&mut gateway, &calls, &stops, 7, first, &mut steps)?;
+    release(&mut gateway, &calls, &stops, 8, first, &mut steps)?;
 
     let count = |decision: Decision| {
         len_u64(

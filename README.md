@@ -19,7 +19,7 @@ Every page is hand-authored HTML, CSS, and vanilla JavaScript. Fonts are self-ho
 | Page | Purpose |
 | --- | --- |
 | `index.html` | hero, evidence status, the ascent, four audience paths, tested versus proposed |
-| `proof.html` | deterministic replay of the `sts2-gateway` lease fence (seven steps from `recipes/gateway-lease-fence/fixture.json`) |
+| `proof.html` | deterministic replay of the `sts2-gateway` lease fence (eight steps from `recipes/gateway-lease-fence/fixture.json`) |
 | `recipes.html` | the starter cargo recipe, an honest empty gallery, how to submit |
 | `architecture.html` | runtime topology, boundary table, definitions |
 | `repositories.html` | nine-repository inventory, historical pinned commits and CI results |
