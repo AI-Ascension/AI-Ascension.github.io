@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Contribute — AI-Ascension</title>
-<meta name="description" content="Four bounded first tasks for players, Rust contributors, MCP builders, and security reviewers; no need to understand all six repositories.">
+<meta name="description" content="Four bounded first tasks for players, Rust contributors, MCP builders, and security reviewers; no need to understand all nine repositories.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://ai-ascension.github.io/contributing.html">
 <link rel="icon" href="assets/identity/favicon.svg" type="image/svg+xml">
@@ -14,14 +14,14 @@
 <meta property="og:site_name" content="AI-Ascension">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Contribute — AI-Ascension">
-<meta property="og:description" content="Four bounded first tasks for players, Rust contributors, MCP builders, and security reviewers; no need to understand all six repositories.">
+<meta property="og:description" content="Four bounded first tasks for players, Rust contributors, MCP builders, and security reviewers; no need to understand all nine repositories.">
 <meta property="og:image" content="https://ai-ascension.github.io/assets/identity/social/ai-ascension.github.io.png">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="640">
 <meta property="og:url" content="https://ai-ascension.github.io/contributing.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contribute — AI-Ascension">
-<meta name="twitter:description" content="Four bounded first tasks for players, Rust contributors, MCP builders, and security reviewers; no need to understand all six repositories.">
+<meta name="twitter:description" content="Four bounded first tasks for players, Rust contributors, MCP builders, and security reviewers; no need to understand all nine repositories.">
 <meta name="twitter:image" content="https://ai-ascension.github.io/assets/identity/social/ai-ascension.github.io.png">
 <link rel="stylesheet" href="assets/identity/tokens.css">
 <link rel="stylesheet" href="assets/site.css">
@@ -54,7 +54,7 @@
   <div class="label">Contribute</div>
   <div class="body">
     <h1 id="contrib-title">One repository is enough to start.</h1>
-    <p>You do not need to understand all six repositories. Each path below names one repository, one bounded first task, and the form to use. Stars, shares, and follows are never required for anything here.</p>
+    <p>You do not need to understand all nine repositories. Each path below names one repository, one bounded first task, and the form to use. Stars, shares, and follows are never required for anything here.</p>
     <p class="small">Shared rules: <a href="https://github.com/AI-Ascension/.github/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> · <a href="https://github.com/AI-Ascension/.github/blob/main/SECURITY.md">SECURITY.md</a> · issue forms: <a href="https://github.com/AI-Ascension/.github/issues/new?template=defect.yml">defect</a>, <a href="https://github.com/AI-Ascension/.github/issues/new?template=contract-observation.yml">contract observation</a>, <a href="https://github.com/AI-Ascension/.github/issues/new?template=evidence.yml">evidence</a>, <a href="https://github.com/AI-Ascension/.github/issues/new?template=proof-recipe.yml">proof recipe</a>.</p>
   </div>
 </section>
@@ -85,7 +85,7 @@
   <div class="body">
     <h2 id="c-mcp">Sketch an adapter example against the tool schema</h2>
     <p><strong>Starter issue:</strong> <a href="https://github.com/AI-Ascension/AI-Ascension.github.io/issues/2">#2 — second recipe replaying the MCP seam</a> (label <code>first-task</code>; scoped to the site repository).</p>
-    <p><strong>One repository:</strong> <a href="https://github.com/AI-Ascension/sts2-mcp-server">sts2-mcp-server</a> (read <code>crates/mcp-server/tests/seam.rs</code>; the single tool is <code>sts2_get_state</code>).</p>
+    <p><strong>One repository:</strong> <a href="https://github.com/AI-Ascension/sts2-mcp-server">sts2-mcp-server</a> (read <code>crates/mcp-server/tests/seam.rs</code>; the foundation tool is <code>sts2_get_state</code>; current runtime profiles are documented separately).</p>
     <p><strong>First safe task:</strong> write a JSON-RPC <code>tools/call</code> example for <code>sts2_get_state</code> that an adapter would send, and the one gateway request it should map to (<code>GET /v1/instances/{id}/state</code> with <code>x-mcp-request-id</code> and <code>x-mcp-session-id</code>). Then write one malformed variant and the error code you expect (-32700, -32602, or -32601). Bounded: no transport, no credentials, no model call.</p>
     <p><strong>Use:</strong> the <a href="https://github.com/AI-Ascension/.github/issues/new?template=proof-recipe.yml">proof-recipe form</a> for an adapter example, or the <a href="https://github.com/AI-Ascension/.github/issues/new?template=contract-observation.yml">contract-observation form</a> for a schema observation. Read <a href="architecture.html">architecture</a> first if you want the surrounding tiers.</p>
   </div>
