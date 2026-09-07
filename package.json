@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "build:pages": "node scripts/build-pages.mjs",
-    "format:check": "prettier --check package.json eslint.config.mjs playwright.config.cjs scripts/build-pages.mjs tests/serve.cjs tests/browser/site.spec.cjs tests/publication.test.cjs tests/tooling.test.cjs",
-    "format:write": "prettier --write package.json eslint.config.mjs playwright.config.cjs scripts/build-pages.mjs tests/serve.cjs tests/browser/site.spec.cjs tests/publication.test.cjs tests/tooling.test.cjs",
+    "format:check": "prettier --check package.json eslint.config.mjs playwright.config.cjs scripts/build-pages.mjs tests/serve.cjs tests/browser/site.spec.cjs tests/publication.test.cjs tests/tooling.test.cjs scripts/check-recipe.mjs tests/recipe-runner.test.cjs",
+    "format:write": "prettier --write package.json eslint.config.mjs playwright.config.cjs scripts/build-pages.mjs tests/serve.cjs tests/browser/site.spec.cjs tests/publication.test.cjs tests/tooling.test.cjs scripts/check-recipe.mjs tests/recipe-runner.test.cjs",
     "lint": "eslint assets tests scripts playwright.config.cjs",
     "test": "node --test tests/*.test.cjs",
     "test:browser": "npm run build:pages && playwright test --config=playwright.config.cjs",
