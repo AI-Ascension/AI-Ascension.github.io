@@ -6,10 +6,13 @@ Live at <https://ai-ascension.github.io>.
 
 ## Run locally
 
-There is no build step. Open `index.html` directly in a browser, or serve the directory with any static file server, for example:
+The runtime needs no bundler. Open `index.html` directly, or use the pinned development
+tools (Node version in `.node-version`):
 
 ```
-npx serve .
+npm ci --ignore-scripts --no-audit --no-fund
+npm run build:pages
+node tests/serve.cjs .pages-dist
 ```
 
 Every page is hand-authored HTML, CSS, and vanilla JavaScript. Fonts are self-hosted. The site makes no external requests: no analytics, no cookies, no font service, no CDN.
@@ -29,12 +32,19 @@ Every page is hand-authored HTML, CSS, and vanilla JavaScript. Fonts are self-ho
 
 ## Deploy
 
-`node --test tests/*.test.cjs` checks the embedded fixture, entry-page local links,
-and replay controls with a synthetic DOM. The read-only validation workflow also
-runs the pinned Rust recipe and compares its output. These checks do not render
-the site or establish screen-reader, browser-layout, or game-host behavior.
+`npm run verify` checks scoped formatting, browser/Node JavaScript contexts,
+fixture bytes, links, synthetic replay and real Chromium keyboard, error and
+reduced-motion behavior. Install the pinned Playwright browser once with
+`npx playwright install chromium`. Publication regressions reject symlinked or
+missing inputs, omit synthetic reports and policy files, and compare repeated
+build digests. These tests do not establish screen-reader or game-host behavior.
+The read-only validation workflow also reproduces both historical Rust recipes.
 
-`.github/workflows/pages.yml` deploys the repository root to GitHub Pages on every push to `main` (and on manual dispatch) using pinned action commits. `.nojekyll` disables Jekyll processing. Pages must be enabled for the repository with "GitHub Actions" as the source.
+`.github/workflows/pages.yml` publishes the explicit runtime inventory in
+`.pages-dist` on pushes to `main` or manual dispatch, using pinned action commits.
+The build preserves existing self-hosted font licenses and recipe JSON bytes;
+Node packages, test traces, standards tooling and source reports are excluded.
+`.nojekyll` disables Jekyll. No deployment is implied by local validation.
 
 ## Identity and art provenance
 

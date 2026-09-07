@@ -29,6 +29,8 @@ test.describe("published static site", () => {
   test("invalid fixture reports a user-facing error without throwing", async ({
     page,
   }) => {
+    const errors = [];
+    page.on("pageerror", (error) => errors.push(error.message));
     await page.goto("/proof.html");
     await page.evaluate(() => {
       document.getElementById("fixture").textContent = "{";
@@ -39,12 +41,18 @@ test.describe("published static site", () => {
     await expect(page.locator("#live")).toHaveText(
       "Fixture could not be parsed.",
     );
+    expect(errors).toEqual([]);
   });
 
   test("reduced motion completes the proof immediately", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/proof.html");
-    await page.locator("#run").click();
+    // Inspect immediately after the click handler, with no assertion auto-wait.
+    const status = await page.locator("#run").evaluate((button) => {
+      button.click();
+      return document.getElementById("live").textContent;
+    });
+    expect(status).toContain("Replay complete: 8 of 8 steps");
     await expect(page.locator("#live")).toContainText(
       "Replay complete: 8 of 8 steps",
     );

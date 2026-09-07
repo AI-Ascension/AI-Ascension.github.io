@@ -1,80 +1,92 @@
-import { cp, mkdir, readdir, rm } from "node:fs/promises";
+import { copyFile, lstat, mkdir, readdir, rm } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const output = path.join(root, ".pages-dist");
-const excluded = new Set([
-  ".git",
-  ".github",
-  ".pages-dist",
-  ".gitignore",
-  ".gitattributes",
-  "LICENSE",
-  "NOTICES.md",
-  "README.md",
-  "VERIFICATION.md",
-  "eslint.config.mjs",
-  "node_modules",
-  "package-lock.json",
-  "package.json",
-  "playwright.config.cjs",
-  "scripts",
-  "tests",
+// Explicit runtime inventory keeps new tooling and reports out of publication.
+const pages = [
+  ".nojekyll",
+  "404.html",
+  "architecture.html",
+  "contributing.html",
+  "evidence.html",
+  "index.html",
+  "proof.html",
+  "recipes.html",
+  "repositories.html",
+  "robots.txt",
+  "sitemap.xml",
+];
+const fixtures = [
+  "assets/fonts/NOTICES.md",
+  "assets/fonts/LICENSE-BricolageGrotesque.txt",
+  "assets/fonts/LICENSE-Fraunces.txt",
+  "assets/fonts/LICENSE-JetBrainsMono.txt",
+  "recipes/gateway-lease-fence/fixture.json",
+  "recipes/mcp-seam/fixture.json",
+];
+const assetExtensions = new Set([
+  ".css",
+  ".js",
+  ".svg",
+  ".png",
+  ".jpg",
+  ".jpeg",
+  ".webp",
+  ".avif",
+  ".ico",
+  ".woff",
+  ".woff2",
+  ".ttf",
+  ".otf",
 ]);
 
-function shouldCopy(relativePath, isDirectory) {
-  const normalized = relativePath.split(path.sep).join("/");
-  const parts = normalized.split("/");
-
-  if (parts.some((part) => part.startsWith("."))) {
-    return false;
+async function admit(relative) {
+  let current = root;
+  for (const component of relative.split("/")) {
+    current = path.join(current, component);
+    if ((await lstat(current)).isSymbolicLink()) {
+      throw new Error(`Publication input is a symlink: ${relative}`);
+    }
   }
-  if (normalized.startsWith("recipes/")) {
-    return isDirectory || path.posix.basename(normalized) === "fixture.json";
+  if (!(await lstat(current)).isFile()) {
+    throw new Error(`Publication input is not a file: ${relative}`);
   }
-  if (
-    normalized === "assets/identity/review.html" ||
-    (normalized.startsWith("assets/identity/") && normalized.endsWith(".md"))
-  ) {
-    return false;
-  }
-  return true;
+  return relative;
 }
 
-async function copyTree(source, destination, relative = "") {
-  await mkdir(destination, { recursive: true });
-  for (const entry of await readdir(source, { withFileTypes: true })) {
-    const childRelative = relative
-      ? path.join(relative, entry.name)
-      : entry.name;
-    if (!shouldCopy(childRelative, entry.isDirectory())) {
+async function assets(relative, inventory) {
+  const directory = path.join(root, relative);
+  if ((await lstat(directory)).isSymbolicLink()) {
+    throw new Error(`Publication directory is a symlink: ${relative}`);
+  }
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    if (entry.name.startsWith(".")) {
       continue;
     }
-    const childSource = path.join(source, entry.name);
-    const childDestination = path.join(destination, entry.name);
+    const child = `${relative}/${entry.name}`;
+    if (entry.isSymbolicLink()) {
+      throw new Error(`Publication input is a symlink: ${child}`);
+    }
     if (entry.isDirectory()) {
-      await copyTree(childSource, childDestination, childRelative);
-    } else {
-      await cp(childSource, childDestination);
+      await assets(child, inventory);
+    } else if (assetExtensions.has(path.extname(entry.name).toLowerCase())) {
+      inventory.push(await admit(child));
     }
   }
 }
 
+const inventory = [];
+for (const relative of [...pages, ...fixtures]) {
+  inventory.push(await admit(relative));
+}
+await assets("assets", inventory);
+// Check inputs before replacing the previous local build artifact.
 await rm(output, { force: true, recursive: true });
 await mkdir(output, { recursive: true });
-
-for (const entry of await readdir(root, { withFileTypes: true })) {
-  if (excluded.has(entry.name) || entry.name.startsWith(".")) {
-    continue;
-  }
-  const source = path.join(root, entry.name);
-  const destination = path.join(output, entry.name);
-  if (entry.isDirectory()) {
-    await copyTree(source, destination, entry.name);
-  } else {
-    await cp(source, destination);
-  }
+for (const relative of inventory.sort()) {
+  const destination = path.join(output, relative);
+  await mkdir(path.dirname(destination), { recursive: true });
+  await copyFile(path.join(root, relative), destination);
 }
-
-await cp(path.join(root, ".nojekyll"), path.join(output, ".nojekyll"));

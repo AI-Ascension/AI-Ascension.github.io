@@ -1,6 +1,8 @@
 const assert = require("node:assert/strict");
 const childProcess = require("node:child_process");
 const fs = require("node:fs");
+const os = require("node:os");
+const crypto = require("node:crypto");
 const path = require("node:path");
 const test = require("node:test");
 
@@ -36,6 +38,10 @@ test("Pages build contains runtime files and excludes source-only material", () 
     "assets/site.js",
     "assets/proof.js",
     "assets/fonts/bricolage-grotesque-latin-wght-normal.woff2",
+    "assets/fonts/NOTICES.md",
+    "assets/fonts/LICENSE-BricolageGrotesque.txt",
+    "assets/fonts/LICENSE-Fraunces.txt",
+    "assets/fonts/LICENSE-JetBrainsMono.txt",
     "assets/hero/hero-art-1600.webp",
     "index.html",
     "proof.html",
@@ -112,5 +118,71 @@ test("Pages build contains runtime files and excludes source-only material", () 
         assert.match(linkedHtml, new RegExp(`id="${fragment}"`));
       }
     }
+  }
+});
+
+test("publication rejects linked or missing inputs and excludes reports deterministically", () => {
+  childProcess.execFileSync(process.execPath, ["scripts/build-pages.mjs"], {
+    cwd: root,
+  });
+  const fixture = fs.mkdtempSync(path.join(os.tmpdir(), "pages-publication-"));
+  try {
+    fs.cpSync(output, fixture, { recursive: true });
+    fs.mkdirSync(path.join(fixture, "scripts"));
+    fs.copyFileSync(
+      path.join(root, "scripts/build-pages.mjs"),
+      path.join(fixture, "scripts/build-pages.mjs"),
+    );
+    for (const name of [
+      "test-results/case/trace.zip",
+      "playwright-report/index.html",
+      "standards/BASELINE.md",
+      "docs/standards/VERIFICATION.md",
+      "standards.lock.json",
+      "standards-profile.toml",
+    ]) {
+      fs.mkdirSync(path.dirname(path.join(fixture, name)), { recursive: true });
+      fs.writeFileSync(path.join(fixture, name), "SYNTHETIC_NONPUBLIC_MARKER");
+    }
+    const run = () =>
+      childProcess.spawnSync(process.execPath, ["scripts/build-pages.mjs"], {
+        cwd: fixture,
+        encoding: "utf8",
+      });
+    const built = path.join(fixture, ".pages-dist");
+    const digest = () =>
+      filesUnder(built)
+        .sort()
+        .map((name) => [
+          name,
+          crypto
+            .createHash("sha256")
+            .update(fs.readFileSync(path.join(built, name)))
+            .digest("hex"),
+        ]);
+    assert.equal(run().status, 0);
+    const first = digest();
+    assert.equal(
+      first.some(([name]) =>
+        /^(test-results|playwright-report|standards|docs)/.test(name),
+      ),
+      false,
+    );
+    assert.equal(run().status, 0);
+    assert.deepEqual(digest(), first);
+    fs.symlinkSync(
+      path.join(fixture, "standards.lock.json"),
+      path.join(fixture, "assets/linked.css"),
+    );
+    const linked = run();
+    assert.notEqual(linked.status, 0);
+    assert.match(linked.stderr, /Publication input is a symlink/);
+    assert.deepEqual(digest(), first);
+    fs.unlinkSync(path.join(fixture, "assets/linked.css"));
+    fs.unlinkSync(path.join(fixture, "proof.html"));
+    assert.notEqual(run().status, 0);
+    assert.deepEqual(digest(), first);
+  } finally {
+    fs.rmSync(fixture, { recursive: true });
   }
 });

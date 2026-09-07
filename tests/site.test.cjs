@@ -20,7 +20,7 @@ test('entry-page local links and fragments resolve', () => {
     assert.equal(new Set(ids).size, ids.length, `${file}: duplicate id`);
     for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
       const target = match[1];
-      if (/^(?:[a-z]+:|\/\/)/i.test(target)) continue;
+      if (/^(?:[a-z]+:|\/\/)/i.test(target)) { continue; }
       const [pathname, fragment] = target.split('#');
       const resolved = path.join(root, pathname || file);
       assert.ok(fs.existsSync(resolved), `${file}: missing ${target}`);

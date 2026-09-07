@@ -41,7 +41,6 @@ const nodeGlobals = {
   clearTimeout: "readonly",
   console: "readonly",
   Date: "readonly",
-  document: "readonly",
   Error: "readonly",
   JSON: "readonly",
   Map: "readonly",
@@ -102,5 +101,9 @@ export default [
       globals: nodeGlobals,
     },
     rules: commonRules,
+  },
+  {
+    files: ["tests/browser/**/*.cjs"],
+    languageOptions: { globals: { document: "readonly" } },
   },
 ];
