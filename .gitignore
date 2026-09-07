@@ -3,3 +3,6 @@ out*.json
 .pages-dist/
 node_modules/
 test-results/
+
+# Generated output of the pinned standards tool only.
+standards/tools/standards-sync/target/

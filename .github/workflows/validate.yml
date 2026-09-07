@@ -36,13 +36,11 @@ jobs:
         run: npm run test:browser
       - name: Select documented Rust toolchain
         run: rustup toolchain install 1.97.1 --profile minimal
+      - name: Validate local pinned standards
+        run: cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root .
       - name: Reproduce pinned safe recipe
         working-directory: recipes/gateway-lease-fence
-        run: |
-          cargo +1.97.1 run --locked --release > "$RUNNER_TEMP/gateway-proof.json"
-          cmp "$RUNNER_TEMP/gateway-proof.json" fixture.json
+        run: node ../../scripts/check-recipe.mjs
       - name: Reproduce pinned MCP seam recipe
         working-directory: recipes/mcp-seam
-        run: |
-          cargo +1.97.1 run --locked --release > "$RUNNER_TEMP/mcp-seam.json"
-          cmp "$RUNNER_TEMP/mcp-seam.json" fixture.json
+        run: node ../../scripts/check-recipe.mjs

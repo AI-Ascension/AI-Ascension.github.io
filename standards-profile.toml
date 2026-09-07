@@ -1,0 +1,70 @@
+schema_version = 1
+profile_id = "web-static"
+repository = "AI-Ascension/AI-Ascension.github.io"
+owner = "ORG"
+source_bundle = "AI-Ascension/.github"
+source_commit = "44b403033f9c19a3e7b119bd32433f1cb1b1cc1f"
+source_digest = "sha256:30022718c9bbff2ff6deae7a42c2d7fae74b045a1c999aa62d84090afd037e84"
+distribution = "local"
+scopes = [
+    "html",
+    "css",
+    "javascript",
+    "rust",
+]
+
+[checks]
+fast = [
+    "git-diff-check",
+    "standards-validate",
+    "npm-format-check",
+    "npm-lint",
+    "node-tests",
+]
+required = [
+    "browser-check",
+    "pinned-gateway-recipe",
+    "pinned-mcp-recipe",
+]
+extended = []
+
+[checks.commands.browser-check]
+command = "npm run test:browser"
+target = "."
+
+[checks.commands.git-diff-check]
+command = "git diff --check"
+target = "."
+
+[checks.commands.node-tests]
+command = "node --test tests/*.test.cjs"
+target = "."
+
+[checks.commands.npm-format-check]
+command = "npm run format:check"
+target = "."
+
+[checks.commands.npm-lint]
+command = "npm run lint"
+target = "."
+
+[checks.commands.pinned-gateway-recipe]
+command = "node ../../scripts/check-recipe.mjs"
+target = "recipes/gateway-lease-fence"
+
+[checks.commands.pinned-mcp-recipe]
+command = "node ../../scripts/check-recipe.mjs"
+target = "recipes/mcp-seam"
+
+[checks.commands.standards-validate]
+command = "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root ."
+target = "."
+
+[evidence]
+runtime = "unverified"
+deployment = "unverified"
+provider = "unverified"
+
+[exceptions]
+file = ""
+status = "none"
