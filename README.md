@@ -2,6 +2,12 @@
 
 Public site for AI-Ascension: what is tested today, what is only proposed, and a browser replay of one gateway contract test.
 
+This repository is the historical evidence entry point for AI Ascension. The
+developer flagship is [Ascension](https://github.com/AI-Ascension/sts2-harness),
+and audience-facing run reports belong to **The Climb — by AI Ascension**.
+Those labels are presentation copy; this Pages repository name, its routes,
+anchors, and evidence assets remain stable.
+
 Live at <https://ai-ascension.github.io>.
 
 ## Run locally
