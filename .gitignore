@@ -1,2 +1,5 @@
 recipes/**/target/
 out*.json
+.pages-dist/
+node_modules/
+test-results/

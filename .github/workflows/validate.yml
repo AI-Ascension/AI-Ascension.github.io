@@ -16,8 +16,23 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24.x
+          cache: npm
+      - name: Install site tooling
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check formatting and JavaScript
+        run: |
+          npm run format:check
+          npm run lint
       - name: Validate fixture, local links, and replay controls
         run: node --test tests/*.test.cjs
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run browser checks
+        run: npm run test:browser
       - name: Select documented Rust toolchain
         run: rustup toolchain install 1.97.1 --profile minimal
       - name: Reproduce pinned safe recipe

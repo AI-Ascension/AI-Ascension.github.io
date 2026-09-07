@@ -69,7 +69,9 @@ test('pause/resume counts one run; repeated completion navigation counts once', 
 
 test('manual stepping starts once and reset starts a distinct replay', () => {
   const r = replay();
-  for (let i = 0; i < 8; i++) r.click('step');
+  for (let i = 0; i < 8; i++) {
+    r.click('step');
+  }
   assert.deepEqual(r.counts(), [1, 1]);
   const hash = r.ids.trace.getAttribute('data-final-hash');
   r.click('reset');
@@ -82,7 +84,9 @@ test('manual stepping starts once and reset starts a distinct replay', () => {
 test('timer and reduced-motion runs agree; Run again counts a new replay', () => {
   const timed = replay();
   timed.click('run');
-  for (let i = 0; i < 7; i++) timed.tick();
+  for (let i = 0; i < 7; i++) {
+    timed.tick();
+  }
   assert.deepEqual(timed.counts(), [1, 1]);
   const reduced = replay(true);
   reduced.click('run');
