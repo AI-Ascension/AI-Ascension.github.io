@@ -47,9 +47,10 @@ Design tokens, marks, stamps, and banners live in `assets/identity/`; their prov
 ## Status
 
 The deterministic recipe remains pinned to its historical gateway revision. Current repositories also
-contain bounded, dated Windows/Linux campaign and replay records and a read-only coordinator-
-synchronization check. Those records are scoped to their named fixtures and do not establish
-model-played Victory, native multiplayer, release readiness, or general compatibility. See
-`evidence.html#current`.
+contain bounded, dated Windows/Linux campaign and replay records, Runtime-v4 source/component paths,
+a read-only coordinator-synchronization check, and a two-process native co-op admission diagnostic.
+The diagnostic's disconnect observation failed and produced no gameplay or recovery claim. These
+records are scoped to their named fixtures and do not establish model-played Victory, native
+multiplayer gameplay, release readiness, or general compatibility. See `evidence.html#current`.
 
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.
