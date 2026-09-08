@@ -121,7 +121,7 @@ test("Pages build contains runtime files and excludes source-only material", () 
   }
 });
 
-test("publication rejects linked or missing inputs and excludes reports deterministically", () => {
+test("publication rejects linked or missing inputs, rendered-secret reports, and excludes reports deterministically", () => {
   childProcess.execFileSync(process.execPath, ["scripts/build-pages.mjs"], {
     cwd: root,
   });
@@ -136,13 +136,19 @@ test("publication rejects linked or missing inputs and excludes reports determin
     for (const name of [
       "test-results/case/trace.zip",
       "playwright-report/index.html",
+      "reports/rendered-secret-config.html",
       "standards/BASELINE.md",
       "docs/standards/VERIFICATION.md",
       "standards.lock.json",
       "standards-profile.toml",
     ]) {
       fs.mkdirSync(path.dirname(path.join(fixture, name)), { recursive: true });
-      fs.writeFileSync(path.join(fixture, name), "SYNTHETIC_NONPUBLIC_MARKER");
+      fs.writeFileSync(
+        path.join(fixture, name),
+        name === "reports/rendered-secret-config.html"
+          ? "<pre>RENDERED_SECRET_CONFIG=SYNTHETIC_ONLY</pre>"
+          : "SYNTHETIC_NONPUBLIC_MARKER",
+      );
     }
     const run = () =>
       childProcess.spawnSync(process.execPath, ["scripts/build-pages.mjs"], {
@@ -164,8 +170,12 @@ test("publication rejects linked or missing inputs and excludes reports determin
     const first = digest();
     assert.equal(
       first.some(([name]) =>
-        /^(test-results|playwright-report|standards|docs)/.test(name),
+        /^(test-results|playwright-report|reports|standards|docs)/.test(name),
       ),
+      false,
+    );
+    assert.equal(
+      first.some(([name]) => name === "reports/rendered-secret-config.html"),
       false,
     );
     assert.equal(run().status, 0);
