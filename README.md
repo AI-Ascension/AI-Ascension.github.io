@@ -177,7 +177,7 @@ until its site PR merges.
 
 ## Latest publication successor — 2026-09-10, 19:26 UTC
 
-The preceding 19:15 UTC successor is now published; its pre-merge pending wording is retained
+The preceding 19:15 UTC successor is now published; its pre-merge publication wording is retained
 as dated history. Site `main` is
 [`64de240`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/64de240fe7f93e4660d6e3e53a0844257d6827f8)
 with tree `530c3f7819b92699bb266add9ef703477fde73d5`. Site validation
