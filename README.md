@@ -53,9 +53,7 @@ The diagnostic's disconnect observation failed and produced no gameplay or recov
 identity-bound cleanup removed the previously reviewed stale Windows candidate and hash-verified the
 retained profile save and canonical source; this is storage evidence only. These records are scoped to
 their named fixtures and do not establish model-played Victory, native multiplayer gameplay, release
-readiness, or general compatibility. The latest source review, captured at 08:09 UTC on 2026-09-10,
-tracks nine default-main heads, including gateway [`6b6c7f2`](https://github.com/AI-Ascension/sts2-gateway/commit/6b6c7f2fac67de22fdf78c9fd818c6781f689ba0),
-MCP [`73e777b`](https://github.com/AI-Ascension/sts2-mcp-server/commit/73e777b96700917cca5ff8f6ce0f5a72009384bc),
-and harness [`33437dd`](https://github.com/AI-Ascension/sts2-harness/commit/33437ddb18f69f68d88521d947efa3568a32a3bf), where PR #50 is merged with durable recovery and raw action identity source. The same refresh recorded 27 open pull requests; these are not native or release evidence. See `evidence.html#current` for all nine heads and the current limits.
+readiness, or general compatibility. The latest source review, captured at 08:32 UTC on 2026-09-10,
+tracks nine default-main heads, including game-mod [`b9754b8`](https://github.com/AI-Ascension/sts2-game-mod/commit/b9754b803cbff79836143d5c115146f65b55184c) after PR #69 merged native co-op contracts and source probes, gateway [`6b6c7f2`](https://github.com/AI-Ascension/sts2-gateway/commit/6b6c7f2fac67de22fdf78c9fd818c6781f689ba0), and harness [`33437dd`](https://github.com/AI-Ascension/sts2-harness/commit/33437ddb18f69f68d88521d947efa3568a32a3bf). The same refresh recorded 29 open pull requests; these are not native or release evidence. See `evidence.html#current` for all nine heads and the current limits.
 
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.
