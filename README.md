@@ -49,11 +49,13 @@ Design tokens, marks, stamps, and banners live in `assets/identity/`; their prov
 The deterministic recipe remains pinned to its historical gateway revision. Current repositories also
 contain bounded, dated Windows/Linux campaign and replay records, Runtime-v4 source/component paths,
 a read-only coordinator-synchronization check, and a two-process native co-op admission diagnostic.
-The diagnostic's disconnect observation failed and produced no gameplay or recovery claim. These
-records are scoped to their named fixtures and do not establish model-played Victory, native
-multiplayer gameplay, release readiness, or general compatibility. The current source review tracks
-the default-main gateway [`2b44bf3`](https://github.com/AI-Ascension/sts2-gateway/commit/2b44bf347f790509c9f13378c89719d09366d45b),
-MCP [`b5a9262`](https://github.com/AI-Ascension/sts2-mcp-server/commit/b5a9262f1c76da76ea6f84fca0f1ee821ff67001),
-and harness [`3926e5a`](https://github.com/AI-Ascension/sts2-harness/commit/3926e5a30ab569612e67d2dfdc6542f1391e95d7) heads for their source/component paths as refreshed at 02:36 UTC on 2026-09-10. The same refresh recorded 31 open pull requests; these are not native or release evidence. See `evidence.html#current` for all nine heads and the current limits.
+The diagnostic's disconnect observation failed and produced no gameplay or recovery claim. A fresh
+identity-bound cleanup removed the previously reviewed stale Windows candidate and hash-verified the
+retained profile save and canonical source; this is storage evidence only. These records are scoped to
+their named fixtures and do not establish model-played Victory, native multiplayer gameplay, release
+readiness, or general compatibility. The latest source review, captured at 08:09 UTC on 2026-09-10,
+tracks nine default-main heads, including gateway [`6b6c7f2`](https://github.com/AI-Ascension/sts2-gateway/commit/6b6c7f2fac67de22fdf78c9fd818c6781f689ba0),
+MCP [`73e777b`](https://github.com/AI-Ascension/sts2-mcp-server/commit/73e777b96700917cca5ff8f6ce0f5a72009384bc),
+and harness [`33437dd`](https://github.com/AI-Ascension/sts2-harness/commit/33437ddb18f69f68d88521d947efa3568a32a3bf), where PR #50 is merged with durable recovery and raw action identity source. The same refresh recorded 27 open pull requests; these are not native or release evidence. See `evidence.html#current` for all nine heads and the current limits.
 
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.
