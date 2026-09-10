@@ -96,4 +96,24 @@ model-controlled Victory or replay, no native two-peer settlement or disconnect/
 no restart-persistent two-backend telemetry acceptance, zero tags and releases, and no verified
 Workshop upload or lifecycle acceptance.
 
+The latest `confirmed` successor refresh, captured at 16:25 UTC, follows gateway PR [#37](https://github.com/AI-Ascension/sts2-gateway/pull/37)
+merging at `2026-09-10T16:20:43Z` and harness PR [#59](https://github.com/AI-Ascension/sts2-harness/pull/59)
+merging at `2026-09-10T16:21:05Z`. Gateway `main` is
+[`5f3eadab`](https://github.com/AI-Ascension/sts2-gateway/commit/5f3eadabede9954bc834a62e3c4c1003444826ca),
+with CI `34501500166` and policy `34501500201` passed. Harness `main` is
+[`5cc486a6`](https://github.com/AI-Ascension/sts2-harness/commit/5cc486a66b6f11930675af06f7426cd91c609983),
+with CI `34501538192` and policy `34501538262` passed. Gateway PR #37 is a test-only malformed
+settled-receipt regression; harness PR #59 rejects conflicting provider completion retries.
+These are reliability source/component records and do not establish live host, provider, or game
+execution.
+
+Game-mod now has one published, non-draft source-only prerelease,
+[`sts2-game-mod-v0.4.0`](https://github.com/AI-Ascension/sts2-game-mod/releases/tag/sts2-game-mod-v0.4.0),
+targeting [`a70a5e5`](https://github.com/AI-Ascension/sts2-game-mod/commit/a70a5e5bb2fa89fade7e16dbb4a58ed80e31355b);
+source-release workflow `34501301708` passed. Its bundles contain no compiled mod, runtime payload,
+proprietary game files, Workshop package, installer operation, or game launch. Host compatibility,
+live gameplay, provider operation, Workshop publication, and platform support remain unverified;
+the other eight repositories have zero tags and releases. See [`evidence.html#current`](evidence.html#current)
+and the linked status supplement for the complete nine-head table, release details, and blockers.
+
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.
