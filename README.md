@@ -61,4 +61,20 @@ retained profile save and canonical source; this is storage evidence only. These
 their named fixtures and do not establish model-played Victory, native multiplayer gameplay, release
 readiness, or general compatibility. The latest `confirmed` source review, captured at 15:34–15:38 UTC on 2026-09-10, records all nine exact default-main heads and the site publication result in `evidence.html#current` and the linked status supplement. The records do not establish model-played Victory or its replay, native settlement or co-op recovery, live two-backend telemetry, a public release, or Workshop upload, legal agreement, entitlement, and lifecycle acceptance. Site `main` is `3935679`; validation run `34495457608` and Pages deployment `34495457785` succeeded, which confirms static publication only.
 
+The latest `confirmed` successor refresh begins at 15:54 UTC on 2026-09-10 and records the current
+nine default-main heads and completed checks in [`evidence.html#current`](evidence.html#current).
+Game-mod `main` is [`a70a5e5`](https://github.com/AI-Ascension/sts2-game-mod/commit/a70a5e5bb2fa89fade7e16dbb4a58ed80e31355b)
+after [PR #71](https://github.com/AI-Ascension/sts2-game-mod/pull/71) closed the source-distribution
+policy and copied REST artifact parity gap. Harness `main` is
+[`4342789`](https://github.com/AI-Ascension/sts2-harness/commit/4342789de4bf5a5f23aee85be273db9a263c9c31)
+after [PR #58](https://github.com/AI-Ascension/sts2-harness/pull/58) wired the worker handoff/runtime/store
+graph and its watchdog-worker-v1 fixtures and restart/recovery tests. These remain source/component
+and CI records. The blockers remain exact: no model-controlled Victory or replay; no native two-peer
+action/effect/checksum settlement or disconnect/rejoin recovery; Laminar credential/path and rootful
+Podman/host acceptance are still needed; there are zero tags and zero GitHub releases across the nine
+repositories; and Workshop upload, Steam legal agreement, entitlement, item/content visibility,
+subscription/discovery/loading, update, and rollback remain unverified. Site `main` is `a451a70`, with
+validation `34498420048` and Pages deployment `34498419971` successful; this confirms static publication
+only.
+
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.
