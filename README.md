@@ -77,4 +77,23 @@ subscription/discovery/loading, update, and rollback remain unverified. Site `ma
 validation `34498420048` and Pages deployment `34498419971` successful; this confirms static publication
 only.
 
+The latest `confirmed` successor refresh, captured at 16:13 UTC, follows harness PR [#51](https://github.com/AI-Ascension/sts2-harness/pull/51)
+merging at `2026-09-10T16:03:56Z`. Harness `main` is
+[`780f2d5`](https://github.com/AI-Ascension/sts2-harness/commit/780f2d521508a2aadc76c4d779544d967955f102);
+PR checks `34499698232` and `34499698312`, followed by main checks `34499708670` and
+`34499708793`, passed. PR #51 adds bounded context-capture source/component wiring through
+`ExoSession::decide`, the generic `ProviderPort` route, Astra's final CLI handoff, and Ollama's
+final serialized HTTP write, with lifecycle, identity, manifest, queue, vault, and
+failure-fidelity tests. These are source/component and synthetic differential records: no real
+provider, game, or external service was called, so they do not establish a provider receipt,
+game action, browser run, native platform behavior, integrated producer/store demonstration,
+or gameplay settlement. Native preflight reached root → lead only; coordinator/specialist
+ancestry remains unverified. The exact nine-head table and blockers remain in
+[`evidence.html#current`](evidence.html#current) and the linked status supplement. At capture,
+site `main` was `457f002`, with validation `34499991425` and Pages deployment `34499991509`
+successful; this confirms static publication only. The current blockers remain no
+model-controlled Victory or replay, no native two-peer settlement or disconnect/rejoin recovery,
+no restart-persistent two-backend telemetry acceptance, zero tags and releases, and no verified
+Workshop upload or lifecycle acceptance.
+
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.
