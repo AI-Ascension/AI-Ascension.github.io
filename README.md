@@ -52,7 +52,7 @@ Design tokens, marks, stamps, and banners live in `assets/identity/`; their prov
 
 ## Status
 
-The current snapshot is the dated 19:15 UTC successor below; earlier paragraphs preserve historical captures.
+The current snapshot is the dated 20:02 UTC successor below; earlier paragraphs preserve historical captures.
 
 The deterministic recipe remains pinned to its historical gateway revision. Current repositories also
 contain bounded, dated Windows/Linux campaign and replay records, Runtime-v4 source/component paths,
@@ -195,3 +195,10 @@ settlement, native two-peer gameplay, observability persistence, release compati
 Workshop lifecycle acceptance.
 
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.
+
+
+## Latest acceptance successor — 2026-09-10, 20:02 UTC (observability PR #18)
+
+The current observability source is [`3867a0b`](https://github.com/AI-Ascension/ai-agent-observability/commit/3867a0bf7bd43ba8ad99a2f5e1d685261bd3c504), tree [`484a8ea`](https://api.github.com/repos/AI-Ascension/ai-agent-observability/git/trees/484a8eaf36f8afcd1e4c446944e948a12bae8cd0), after [PR #18](https://github.com/AI-Ascension/ai-agent-observability/pull/18) merged. Its CI run [34523863255](https://github.com/AI-Ascension/ai-agent-observability/actions/runs/34523863255) passed. The change retains healthchecks in Podman builds; it does not establish live ingestion, query access, persistence across restart, or two-backend correlation. Draft [PR #19](https://github.com/AI-Ascension/ai-agent-observability/pull/19) remains unmerged. The other eight repository identities are unchanged from the linked nine-head table; this site is [`f8b1e8f`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/f8b1e8fedeb6d22e79cd19efb8bdd2e4360cf605) / tree [`1218f1e4`](https://api.github.com/repos/AI-Ascension/AI-Ascension.github.io/git/trees/1218f1e42f6eed422e1d2f1beb81ab46a5fc5720), with validation `34521517729` and Pages deployment `34521517811` passed.
+
+The final r2 query remains `backend_unavailable`: MLflow has one exact identity/trace match with 124 allowlisted spans and no terminal outcome, while Laminar is credential-unavailable with no query rows or restart-persistence proof. Rootful Podman/image identity and the root-only Laminar query key remain unavailable. This is a dated observability boundary and does not change the named Defeat-only runtime evidence, native co-op live gate, source-only release, or Workshop blocker.
