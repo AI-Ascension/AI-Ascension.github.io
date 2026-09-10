@@ -52,7 +52,7 @@ Design tokens, marks, stamps, and banners live in `assets/identity/`; their prov
 
 ## Status
 
-The current snapshot is the dated 20:02 UTC successor below; earlier paragraphs preserve historical captures.
+The current snapshot is the dated 21:32 UTC release successor below; earlier paragraphs preserve historical captures.
 
 The deterministic recipe remains pinned to its historical gateway revision. Current repositories also
 contain bounded, dated Windows/Linux campaign and replay records, Runtime-v4 source/component paths,
@@ -197,8 +197,54 @@ Workshop lifecycle acceptance.
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.
 
 
-## Latest acceptance successor — 2026-09-10, 20:02 UTC (observability PR #18)
+## Latest observability successor — 2026-09-10, 20:44 UTC (post-PR #19 merge)
 
-The current observability source is [`3867a0b`](https://github.com/AI-Ascension/ai-agent-observability/commit/3867a0bf7bd43ba8ad99a2f5e1d685261bd3c504), tree [`484a8ea`](https://api.github.com/repos/AI-Ascension/ai-agent-observability/git/trees/484a8eaf36f8afcd1e4c446944e948a12bae8cd0), after [PR #18](https://github.com/AI-Ascension/ai-agent-observability/pull/18) merged. Its CI run [34523863255](https://github.com/AI-Ascension/ai-agent-observability/actions/runs/34523863255) passed. The change retains healthchecks in Podman builds; it does not establish live ingestion, query access, persistence across restart, or two-backend correlation. Draft [PR #19](https://github.com/AI-Ascension/ai-agent-observability/pull/19) remains unmerged. The other eight repository identities are unchanged from the linked nine-head table; this site is [`f8b1e8f`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/f8b1e8fedeb6d22e79cd19efb8bdd2e4360cf605) / tree [`1218f1e4`](https://api.github.com/repos/AI-Ascension/AI-Ascension.github.io/git/trees/1218f1e42f6eed422e1d2f1beb81ab46a5fc5720), with validation `34521517729` and Pages deployment `34521517811` passed.
+The current observability source is [`89539a6e`](https://github.com/AI-Ascension/ai-agent-observability/commit/89539a6e7754b389f8eac148ba8a49c3892cddd8), tree [`dd948bdb`](https://github.com/AI-Ascension/ai-agent-observability/tree/dd948bdb68844f83e79e36611faacb945030b618), after [PR #19](https://github.com/AI-Ascension/ai-agent-observability/pull/19) merged at `2026-09-10T20:42:45Z`. Its main CI run [34528007520](https://github.com/AI-Ascension/ai-agent-observability/actions/runs/34528007520) passed. The OTel bind/inode deployment repair remains source/component evidence; it does not establish live ingestion, query access, persistence across restart, or two-backend correlation. The other eight repository identities are unchanged from the linked nine-head table; this site is [`f8b1e8f`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/f8b1e8fedeb6d22e79cd19efb8bdd2e4360cf605) / tree [`1218f1e4`](https://api.github.com/repos/AI-Ascension/AI-Ascension.github.io/git/trees/1218f1e42f6eed422e1d2f1beb81ab46a5fc5720), with validation `34521517729` and Pages deployment `34521517811` passed.
 
 The final r2 query remains `backend_unavailable`: MLflow has one exact identity/trace match with 124 allowlisted spans and no terminal outcome, while Laminar is credential-unavailable with no query rows or restart-persistence proof. Rootful Podman/image identity and the root-only Laminar query key remain unavailable. This is a dated observability boundary and does not change the named Defeat-only runtime evidence, native co-op live gate, source-only release, or Workshop blocker.
+
+
+## Latest acceptance successor — 2026-09-10, 21:27 UTC (post-recovery-fence merges)
+
+Gateway PR [#39](https://github.com/AI-Ascension/sts2-gateway/pull/39), harness PR
+[#62](https://github.com/AI-Ascension/sts2-harness/pull/62), and MCP PR
+[#40](https://github.com/AI-Ascension/sts2-mcp-server/pull/40) merged between 21:20 and
+21:21 UTC. The current source heads are gateway
+[`c8be3a7`](https://github.com/AI-Ascension/sts2-gateway/commit/c8be3a72ba9e304392575a1b2bdbc262e392be21) /
+tree `69b9dc2`, MCP
+[`037d10d`](https://github.com/AI-Ascension/sts2-mcp-server/commit/037d10def1cbcb1c807e136d31b294355a92c010) /
+tree `53013a3`, and harness
+[`682c2b5`](https://github.com/AI-Ascension/sts2-harness/commit/682c2b5ba38010e16d43b04c43d40184bda70106) /
+tree `173be64`. Main CI and policy passed for all three.
+
+Gateway rejects echoed recovery request responses and fences unknown receipt generations;
+harness rejects recovery generation drift; MCP accepts the canonical pending-rejoin receipt
+and rejects invalid post-generations on reconcile or unknown responses. These are
+source/component checks. The accepted `coop-native-v1` artifact at protocol
+[`ed8626c`](https://github.com/AI-Ascension/sts2-protocol/commit/ed8626c2cf30089b4bdf214a2fdcb09b3eca3d29)
+still binds gateway `de1fe723`, MCP `47d63f6`, and harness H0 `a2cb481`, with producer
+`ab702db`; the later fixes have not refreshed those artifact identities.
+
+Native two-peer action, vote, effect, checksum, and disconnect/rejoin recovery remain
+unverified. No model-controlled Victory or replay is recorded, and the named Windows/Linux
+records remain bounded Defeat campaigns.
+
+## Latest release successor — 2026-09-10, 21:32 UTC (v0.4.1 source-only prerelease)
+
+The current [`sts2-game-mod-v0.4.1` tag/release](https://github.com/AI-Ascension/sts2-game-mod/releases/tag/sts2-game-mod-v0.4.1)
+is published and non-draft at source commit
+[`d23ca838`](https://github.com/AI-Ascension/sts2-game-mod/commit/d23ca838a7be875f32242123955b4a27782bac04)
+and source tree [`23336ca`](https://github.com/AI-Ascension/sts2-game-mod/tree/23336ca834b5870d15ee6369c101d5c67ff34caf).
+The source-release workflow [34532717805](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34532717805),
+CI [34532510095](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34532510095), and
+policy [34532510190](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34532510190)
+passed at that commit.
+
+The Windows x86-64 source archive SHA-256 is
+`58fdaaf9a6fa243e8a18398bc0d2b90f78eddb228626fbff7b3b5255c3117050`; the Linux x86-64 source
+archive SHA-256 is `174bb1551e26d7693c707f5f9f8989dc0f0d9b83ac34e7e6b9b337c2f03fa78b`.
+This is a source-only prerelease with no compiled runtime or Workshop package, so host
+compatibility and platform support remain unverified. The historical
+[`sts2-game-mod-v0.4.0` release](https://github.com/AI-Ascension/sts2-game-mod/releases/tag/sts2-game-mod-v0.4.0)
+remains published at `a70a5e5` / tree `0b16693`; its earlier hashes remain in the dated
+16:25 UTC record above.
