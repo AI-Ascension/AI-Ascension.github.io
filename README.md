@@ -52,8 +52,8 @@ a read-only coordinator-synchronization check, and a two-process native co-op ad
 The diagnostic's disconnect observation failed and produced no gameplay or recovery claim. These
 records are scoped to their named fixtures and do not establish model-played Victory, native
 multiplayer gameplay, release readiness, or general compatibility. The current source review tracks
-the default-main gateway [`776327a`](https://github.com/AI-Ascension/sts2-gateway/commit/776327aca63c8ff6c6920865cd5c72de83b10c7b),
-MCP [`4787efa`](https://github.com/AI-Ascension/sts2-mcp-server/commit/4787efa1251bcc0eddccc5fea63a8939a8eb06d0),
-and harness [`f8b5858`](https://github.com/AI-Ascension/sts2-harness/commit/f8b5858d09978edf17c24b81a5ced07847e2bd5d) heads for their source/component paths as refreshed at 02:36 UTC on 2026-09-10; these are not native or release evidence. See `evidence.html#current` for all nine heads and the current limits.
+the default-main gateway [`2b44bf3`](https://github.com/AI-Ascension/sts2-gateway/commit/2b44bf347f790509c9f13378c89719d09366d45b),
+MCP [`b5a9262`](https://github.com/AI-Ascension/sts2-mcp-server/commit/b5a9262f1c76da76ea6f84fca0f1ee821ff67001),
+and harness [`3926e5a`](https://github.com/AI-Ascension/sts2-harness/commit/3926e5a30ab569612e67d2dfdc6542f1391e95d7) heads for their source/component paths as refreshed at 02:36 UTC on 2026-09-10. The same refresh recorded 31 open pull requests; these are not native or release evidence. See `evidence.html#current` for all nine heads and the current limits.
 
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.
