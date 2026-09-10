@@ -480,6 +480,17 @@
     <p>Open an evidence issue: <a href="https://github.com/AI-Ascension/.github/issues/new?template=evidence.yml">github.com/AI-Ascension/.github/issues/new?template=evidence.yml</a>. Name the row number or the exact sentence, the surface where you read it, what you observed instead, and the command or file that shows it. A claim that cannot be backed is relabelled or removed; the ledger records the change.</p>
   </div>
 </section>
+
+<section class="row" id="source-head-refresh" aria-labelledby="source-head-refresh-title">
+  <div class="label">Current source heads<span class="sub">2026-09-10 · 23:48 UTC</span></div>
+  <div class="body">
+    <h2 id="source-head-refresh-title">Post-artifact source-head refresh</h2>
+    <p><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span> Two bounded source changes merged after the 22:27 UTC native artifact snapshot. <a href="https://github.com/AI-Ascension/sts2-gateway/pull/34">Gateway PR #34</a> is <code>8ba5521c</code> / tree <code>afb63ec0</code>; CI <a href="https://github.com/AI-Ascension/sts2-gateway/actions/runs/34543637424">34543637424</a> and policy <a href="https://github.com/AI-Ascension/sts2-gateway/actions/runs/34543637382">34543637382</a> passed. It preserves historical persisted host-install rows until a fresh in-memory grant and adds restart coverage.</p>
+    <p><span class="stamp stamp--confirmed"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-confirmed"/></svg>confirmed</span> <a href="https://github.com/AI-Ascension/sts2-harness/pull/66">Harness PR #66</a> is <code>a0ace671</code> / tree <code>ece08dbf</code>; CI <a href="https://github.com/AI-Ascension/sts2-harness/actions/runs/34542788897">34542788897</a> and policy <a href="https://github.com/AI-Ascension/sts2-harness/actions/runs/34542788865">34542788865</a> passed. It adds an authenticated native worker endpoint and durable admission/recovery checks.</p>
+    <p><span class="stamp stamp--unverified"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#st-unverified"/></svg>unverified</span> The accepted protocol artifact remains bound to gateway <code>c8be3a72</code> and harness <code>63dc5636</code>; these later source heads were not silently substituted into the captured conformance record. No live host install, two-peer native action, shared settlement, disconnect/rejoin recovery, or model-played victory is established by these source checks.</p>
+  </div>
+</section>
+
 </main>
 <footer class="site-foot">
   <p class="status-line">Status: pinned deterministic proof · <a href="evidence.html#current">bounded host evidence and current limits</a></p>

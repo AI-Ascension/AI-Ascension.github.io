@@ -341,3 +341,13 @@ The protocol refresh records that PR #53 changed no `coop-native` wire or serial
 The capture uses a synthetic `CapturePort` and records `native_session_executed: false`.
 Live two-peer action, vote, effect, checksum, and disconnect/rejoin recovery remain unverified;
 the v0.4.1 release and current observability/runtime limits remain unchanged.
+
+
+## Current source-head successor — 2026-09-10, 23:48 UTC
+
+After the 22:27 UTC native artifact snapshot, two bounded source changes merged:
+
+- **sts2-gateway**: [`8ba5521c`](https://github.com/AI-Ascension/sts2-gateway/commit/8ba5521c2ec8f158d437a7104567592703e53259) / tree [`afb63ec0`](https://github.com/AI-Ascension/sts2-gateway/tree/afb63ec02ffb6af335dd604e0d4ac82066253dd3), PR [#34](https://github.com/AI-Ascension/sts2-gateway/pull/34), CI [34543637424](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34543637424) and policy [34543637382](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34543637382) passed. It keeps persisted host-install rows historical until a fresh in-memory grant is acknowledged and adds restart coverage.
+- **sts2-harness**: [`a0ace671`](https://github.com/AI-Ascension/sts2-harness/commit/a0ace6712686cb30d6f0b556cb6814ad4c0721d1) / tree [`ece08dbf`](https://github.com/AI-Ascension/sts2-harness/tree/ece08dbfdd989f8b22c4520fe64554b5a4026a9d), PR [#66](https://github.com/AI-Ascension/sts2-harness/pull/66), CI [34542788897](https://github.com/AI-Ascension/sts2-harness/actions/runs/34542788897) and policy [34542788865](https://github.com/AI-Ascension/sts2-harness/actions/runs/34542788865) passed. It adds an authenticated native worker endpoint and durable admission/recovery checks.
+
+The accepted protocol artifact remains bound to gateway `c8be3a72` and harness `63dc5636`; these later source heads were not silently substituted into the captured conformance record. No live host install, two-peer native action, shared settlement, disconnect/rejoin recovery, or model-played victory is established by these checks.
