@@ -54,6 +54,6 @@ records are scoped to their named fixtures and do not establish model-played Vic
 multiplayer gameplay, release readiness, or general compatibility. The current source review tracks
 the default-main gateway [`434d8c7`](https://github.com/AI-Ascension/sts2-gateway/commit/434d8c77fb01895e90c741609e3d2a0ad0e9e8b8),
 MCP [`3b6d71f`](https://github.com/AI-Ascension/sts2-mcp-server/commit/3b6d71fe9642d27717ca6cfa07b5342b914c044c),
-and harness [`ee28096`](https://github.com/AI-Ascension/sts2-harness/commit/ee28096dc722b1e9ef466fc966a79a3422f56ecc) heads for their source/component paths; these are not native or release evidence. See `evidence.html#current`.
+and harness [`b8c50c8`](https://github.com/AI-Ascension/sts2-harness/commit/b8c50c87db0275f0e08d69892f1ebce275f4acb6) heads for their source/component paths; these are not native or release evidence. See `evidence.html#current`.
 
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.
