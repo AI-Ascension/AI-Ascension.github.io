@@ -175,4 +175,23 @@ requests to the deployed r11 pages returned HTTP 200 with hashes recorded in the
 supplement. This is static publication evidence only; the successor is not deployed
 until its site PR merges.
 
+## Latest publication successor — 2026-09-10, 19:26 UTC
+
+The preceding 19:15 UTC successor is now published; its pre-merge pending wording is retained
+as dated history. Site `main` is
+[`64de240`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/64de240fe7f93e4660d6e3e53a0844257d6827f8)
+with tree `530c3f7819b92699bb266add9ef703477fde73d5`. Site validation
+[34520369933](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34520369933)
+and Pages deployment
+[34520369905](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34520369905)
+passed, and deployment `6379445687` reached `success`.
+
+Cache-busted HTTPS requests returned HTTP 200 and matched the merged tree exactly:
+`README.md` `9c4a5589bc35e41b71bb1ef26154b1c35e67f57d1f36e5f0e7b399ac51150dc3`,
+`evidence.html` `a2851de73896a6a2d19e91692043b9eaae028984baca273eeefc6b823e97fd8e`, and
+`repositories.html` `46ac34bd073bc1db8294dee97a649685fa958c4ff027ce3054298af4776a4ecc`.
+This is confirmed static publication evidence; it does not establish game runtime, provider
+settlement, native two-peer gameplay, observability persistence, release compatibility, or
+Workshop lifecycle acceptance.
+
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.
