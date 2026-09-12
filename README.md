@@ -42,6 +42,11 @@ the site or establish screen-reader, browser-layout, or game-host behavior.
 
 `.github/workflows/pages.yml` deploys the repository root to GitHub Pages on every push to `main` (and on manual dispatch) using pinned action commits. `.nojekyll` disables Jekyll processing. Pages must be enabled for the repository with "GitHub Actions" as the source.
 
+Before packaging, the Pages workflow calls the same read-only validation workflow
+used by pull requests at the deployment's source revision. A failed Node test or
+Rust recipe comparison blocks both packaging and deployment. Node is pinned to
+24.16.0; Pages write/OIDC permissions are limited to the jobs that need them.
+
 ## Identity and art provenance
 
 Design tokens, marks, stamps, and banners live in `assets/identity/`; their provenance, sizes, and hashes are in `assets/identity/MANIFEST.md`, and the contrast audit in `assets/identity/CONTRAST.md`. Fonts (SIL OFL 1.1) are in `assets/fonts/` with notices in `assets/fonts/NOTICES.md`. Third-party notices for the site are in `NOTICES.md`. Art is branding, never product evidence.
