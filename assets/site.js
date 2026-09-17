@@ -64,20 +64,73 @@
   function revealAll() {
     for (var i = 0; i < ascents.length; i++) { ascents[i].classList.add('is-in'); }
   }
-  if (!ascents.length) { return; }
-  if (reduced || typeof window.IntersectionObserver !== 'function') {
-    revealAll();
-    return;
+  /* Only the reveal below needs an ascent list; pages without one must still run the spire setup. */
+  if (ascents.length) {
+    if (reduced || typeof window.IntersectionObserver !== 'function') {
+      revealAll();
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            entries[i].target.classList.add('is-in');
+            io.unobserve(entries[i].target);
+          }
+        }
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+      for (var a = 0; a < ascents.length; a++) { io.observe(ascents[a]); }
+      /* Safety: never leave tiers hidden if the observer does not fire (e.g. printing). */
+      window.setTimeout(revealAll, 2500);
+    }
   }
-  var io = new IntersectionObserver(function (entries) {
-    for (var i = 0; i < entries.length; i++) {
-      if (entries[i].isIntersecting) {
-        entries[i].target.classList.add('is-in');
-        io.unobserve(entries[i].target);
+
+  /* ---- scroll-driven center spire animation ---- */
+  var ledgers = document.querySelectorAll('.ledger');
+  if (ledgers.length) {
+    var ticking = false;
+    function updateSpireScroll() {
+      ticking = false;
+      if (reduced) {
+        for (var i = 0; i < ledgers.length; i++) {
+          ledgers[i].style.setProperty('--spire-progress', '1');
+        }
+        return;
+      }
+      var winH = window.innerHeight || document.documentElement.clientHeight || 1;
+      var docH = document.documentElement.scrollHeight || document.body.scrollHeight || 1;
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      /* A page with nothing to scroll has no scroll position to derive progress from, so show the
+         full spire rather than an empty one. */
+      var maxScroll = docH - winH;
+      var progress = maxScroll > 1 ? Math.max(0, Math.min(1, scrollY / maxScroll)) : 1;
+
+      for (var j = 0; j < ledgers.length; j++) {
+        ledgers[j].style.setProperty('--spire-progress', progress.toFixed(4));
       }
     }
-  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-  for (var a = 0; a < ascents.length; a++) { io.observe(ascents[a]); }
-  /* Safety: never leave tiers hidden if the observer does not fire (e.g. printing). */
-  window.setTimeout(revealAll, 2500);
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        if (typeof window.requestAnimationFrame === 'function') {
+          window.requestAnimationFrame(updateSpireScroll);
+        } else {
+          updateSpireScroll();
+        }
+      }
+    }
+
+    if (reduced) {
+      updateSpireScroll();
+    } else {
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      updateSpireScroll();
+      /* The first measurement can be taken before layout settles (fonts, images, wrapping), and a
+         page that then shrinks to no scrollable range would keep a stale progress with no scroll
+         event left to correct it. Recompute whenever the document height changes. */
+      if (typeof window.ResizeObserver === 'function') {
+        new ResizeObserver(updateSpireScroll).observe(document.documentElement);
+      }
+    }
+  }
 })();
