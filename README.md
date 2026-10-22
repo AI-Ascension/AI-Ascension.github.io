@@ -62,7 +62,17 @@ Design tokens, marks, stamps, and banners live in `assets/identity/`; their prov
 
 ## Status
 
-The accepted artifact snapshot remains the dated 22:27 UTC native-artifact successor below; the latest source heads are recorded in the 02:02 UTC successor that follows it.
+The [2026-10-22 source and CI update](evidence.html#source-update-20261022)
+records reviewed Protocol, Core, Mod, Gateway, and Harness heads at 08:40 UTC.
+It covers dependency and source-archive checks, gateway-owned process generations,
+and bounded management dispatch with retained submission recovery. Gateway native
+host qualification and termination of arbitrary stalled Harness backends remain
+open; these source checks do not establish gameplay, deployment, or release readiness.
+
+The historical native-artifact snapshot remains the dated 22:27 UTC successor
+below, with its original producer and consumer identities. Later source heads are
+not substituted into that captured conformance result. The documented source-only
+prereleases remain separate from native game compatibility and supported releases.
 
 The deterministic recipe remains pinned to its historical gateway revision. Current repositories also
 contain bounded, dated Windows/Linux campaign and replay records, Runtime-v4 source/component paths,
