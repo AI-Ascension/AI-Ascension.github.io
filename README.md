@@ -65,9 +65,12 @@ Design tokens, marks, stamps, and banners live in `assets/identity/`; their prov
 The [2026-10-22 source and CI update](evidence.html#source-update-20261022)
 records reviewed Protocol, Core, Mod, Gateway, and Harness heads at 08:40 UTC.
 It covers dependency and source-archive checks, gateway-owned process generations,
-and bounded management dispatch with retained submission recovery. Gateway native
-host qualification and termination of arbitrary stalled Harness backends remain
-open; these source checks do not establish gameplay, deployment, or release readiness.
+and bounded management dispatch with retained submission recovery. The later
+[Linux management command boundary](evidence.html#management-commands-20261022)
+adds helper-owned backend termination for the two shipped serve commands. Generic
+embedding still retains synchronous worker threads; Gateway native host qualification
+remains open. These component checks do not establish gameplay, deployment, Windows
+management-command support, or release readiness.
 
 The historical native-artifact snapshot remains the dated 22:27 UTC successor
 below, with its original producer and consumer identities. Later source heads are
